@@ -1,0 +1,2969 @@
+Let's make a game!
+    name:The Inator Game
+    by:Incremental
+    desc:This is the game about inators. Possibly filled with stupid puns...<//><b>version 1.07:</b><//><.>made 17 buildings<.>finsihed upgrades for cursorinator<.>created boost upgrades<.>created clicking upgrades<.>13 paper upgrades<.>13 house upgrades<.>25 achievements!<//><b>version 1.1:</b><//><.>11 computer upgrades<.>25 achievements<.>2 synergy upgrades<//><b>version 1.17:</b><//><.>5 microwave upgrades<.>5 music upgrades<.>4 animation upgrades<.>4 furniture upgrades<.>2 planet upgrades<.>1 meme upgrade<.>it now shows how much cursor, paper and house's are making per second (WIP)<//><b>version 1.19:</b><//><.>4 synergy upgrades<.>added a few images<//><b>version 1.26:</b><//><.>Re-balanced everything so you can actually complete the game<.>finished train upgrades<.>created upgrades that lead to the Complexapocolypse<.>finished alien, light and almighty cursor upgrades<.>mini complex particle upgrades<.>cursor achievements<//><b>version 1.29</b><//><.>plenty achievements<.>milestone upgrades<//><b>version 1.32</b><//><.>first and second book of complex<.>new building: coders<.>more achievements<//><b>version 1.38 GOLD UPDATE:</b><//><.>new currency: golden complex<.>new building: golden factory<.>brand new feature: shiny! Click on a bouncing shiny across the screen to earn golden complex or complex!<.>more upgrades<.>more achievements<.>removed some time achievements due to unrealistic difficulty<//><b>version 1.43 THINKING ABOUT COMPLEX UPDATE:</b><//><.>Nerfed the effect of the Golden Factory upgrades<.>new building: Gateway, fill the bar up to 100 to unlock something<.>new building: Cognitive Inators<.>more achievements<.>more upgrades
+    created:15/2/2020
+    updated:28/7/2020
+    version:1.43
+ 
+Settings
+    background:https://img.freepik.com/free-vector/future-city-artificial-island-vector-background_1441-2964.jpg?size=626&ext=jpg
+    building cost increase:115%
+    building cost refund:50%
+    spritesheet:icons, 48 by 48, http://orteil.dashnet.org/cookieclicker/img/icons.png
+    stylesheet:stuff/bigBlue.css
+ 
+Layout
+    use default
+ 
+Buttons
+    *clickButton
+        name:
+        desc:This makes complex
+        on click:anim icon wobble
+        on click:yield 1 complex
+        on click:if (have clickingUP1) yield (complex:ps*0.001) complex
+        on click:if (have gcUP1 and chance(1%)) yield 1 goldenComplex
+        icon:https://displaycal.net/theme/icons/256x256/displaycal.png
+        class:bigButton hasFlares
+        icon class:shadowed
+        tooltip origin:bottom
+        tooltip class:red
+ 
+Resources
+    *complex
+        name:complex
+        desc:You can spend these on inators
+        class:noBackground
+        show earned
+        on click:yield 1 clickOnComplex
+ 
+    *goldenComplex
+        name:golden complex
+        desc:You can spend these on special upgrades and buildings
+        class:noBackground
+        show earned
+        hidden when 0
+        on click:yield 1 clickOnGolden
+ 
+    *cursorp
+        name:Cursors Yield
+        desc:How much cursorinators make every second.
+        text:[cursorp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *paperp
+        name:Papers Yield
+        desc:How much paperinators make every second.
+        text:[paperp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *housep
+        name:House Yield
+        desc:How much housinators make every second.
+        text:[housep:ps] complex/s
+        always hidden
+        icon:
+ 
+    *computerp
+        name:Computer Yield
+        desc:How much computerinators make every second.
+        text:[computerp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *microwavep
+        name:Microwave Yield
+        desc:How much microwavinators make every second.
+        text:[microwavep:ps] complex/s
+        always hidden
+        icon:
+ 
+    *musicp
+        name:Music Yield
+        desc:How much musicinators make every second.
+        text:[musicp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *animationp
+        name:Animation Yield
+        desc:How much animationinators make every second.
+        text:[animationp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *furniturep
+        name:Furniture Yield
+        desc:How much furniturinators make every second.
+        text:[furniturep:ps] complex/s
+        always hidden
+        icon:
+ 
+    *planetp
+        name:Planet Yield
+        desc:How much planetinators make every second.
+        text:[planetp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *memep
+        name:Meme Yield
+        desc:How much meminators make every second.
+        text:[memep:ps] complex/s
+        always hidden
+        icon:
+ 
+    *trainp
+        name:Train Yield
+        desc:How much traininators make every second.
+        text:[trainp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *alienp
+        name:Alien Yield
+        desc:How much Alieninators make every second.
+        text:[alienp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *lightp
+        name:Light Yield
+        desc:How much Lightinators make every second.
+        text:[lightp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *acp
+        name:AC Yield
+        desc:How much Almighty Cursorinators make every second.
+        text:[acp:ps] complex/s
+        always hidden
+        icon:
+ 
+    *codep
+        name:Coders Yield
+        desc:How much Coders make every second.
+        text:[codep:ps] complex/s
+        always hidden
+        icon:
+ 
+    *GFactp
+        name:Golden Factory Yield
+        desc:How much Golden Factories make every second.
+        text:[GFactp:ps] goldenComplex/s
+        always hidden
+        icon:
+ 
+    *gatep
+        name:Gateway Yield
+        desc:How much the Gateway make every second.
+        text:[gate:ps] goldenComplex/s
+        always hidden
+        icon:
+ 
+    *cogp
+        name:Cognitive Inator Yield
+        desc:How much the Cognitive Inators make every second.
+        text:[cogp:ps] complex/s
+        always hidden
+        icon:
+ 
+ 
+    *cheevos
+        name:Achievements
+        desc:How much achievements you have.
+        always hidden
+ 
+    *clickOnComplex
+        name:Clicked on complex
+        desc:How many times did you click on complex.
+        always hidden
+ 
+    *clickOnGolden
+        name:Clicked on golden complex
+        desc:How many times did you click on golden complex.
+        always hidden
+ 
+    *time
+        name:Seconds
+        desc:How many seconds you've played the game
+        always hidden
+ 
+ Shinies
+    *luckyComplex
+            on click:log Woop
+	    movement:onRight moveLeft fade bounce:0.05
+	    frequency:60
+	    frequency variation:30
+	    icon:https://pipe.miroware.io/5f1b4446e0665551b1b22fca/Lucky%20Complex.png
+	    class:bigButton
+	    on click:
+		    $boost=1
+		    if (have gcUP3) $boost=4
+			if (chance(25%))
+			        //get at least 7, or between 1 and 3 minutes of our complex production
+			        $amount=max(7,random(complex:ps*60*1,complex:ps*60*3))*$boost
+			        toast The lucky complex grants you<//><b>[$amount] complex</b>.
+			        yield $amount complex
+			else
+				$amount=1*$boost
+				toast The lucky complex grants you<//><b>[$amount] golden complex[s?$amount]</b>!
+				yield $amount goldenComplex
+			end
+		end
+ 
+Buildings
+    *TEMPLATE
+        on click:anim glow
+ 
+    *cursor
+        name:Cursorinator
+        desc:We'll make a lot of satire with this one, will we?<//><b>Base Effect:</b><.>Produces 0.1 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[cursorp:ps]</b> complex every second.
+        cost:15 complex
+        on tick:yield 0.1 complex
+        on tick:yield 0.1 cursorp
+        icon:icons[0,0]
+        unlocked    
+ 
+    *paper
+        name:Paperinators
+        desc:Some humans decided to take down a tree and turn the wood into paper.<//><b>Base Effect:</b><.>Produces 2 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[paperp:ps]</b> complex every second.
+        cost:130 complex
+        on tick:yield 2 complex
+        on tick:yield 2 paperp
+        icon:icons[27,7]
+        unlocked
+ 
+    *house
+        name:Housinators
+        desc:The road to Kingsville, take a right and you're at your house.<//><b>Base Effect:</b><.>Produces 9 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[housep:ps]</b> complex every second.
+        cost:1600 complex
+        on tick:yield 9 complex
+        on tick:yield 9 housep
+        req:15 complex:earned
+        icon:icons[2,6]
+ 
+    *computer
+        name:Computerinators
+        desc:Alan Turing sparked our minds and gave us inspiration.<//><b>Base Effect:</b><.>Produces 51 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[computerp:ps]</b> complex every second.
+        cost:20000 complex
+        on tick:yield 51 complex
+        on tick:yield 51 computerp
+        req:130 complex:earned
+ 
+    *microwave
+        name:Microwavinators
+        desc:I like seeing those micro particles dancing in the hot spring like Hawaii.<//><b>Base Effect:</b><.>Produces 280 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[microwavep:ps]</b> complex every second.
+        cost:165000 complex
+        on tick:yield 280 complex
+        on tick:yield 280 microwavep
+        req:1600 complex:earned
+ 
+    *music
+        name:Musicinators
+        desc:Dance fever, cake by the ocean, despacitos in my speedos.<//><b>Base Effect:</b><.>Produces 1550 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[musicp:ps]</b> complex every second.
+        cost:1600000 complex
+        on tick:yield 1550 complex
+        on tick:yield 1550 musicp
+        req:20000 complex:earned
+        icon:icons[28,6]
+ 
+    *animation
+        name:Animationinators
+        desc:My precious fps is 12, it's not too choppy and not too fluid, it captures the wackiness of us :D<//><b>Base Effect:</b><.>Produces 8200 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[animationp:ps]</b> complex every second.
+        cost:27000000 complex
+        on tick:yield 8200 complex
+        on tick:yield 8200 animationp
+        req:165000 complex:earned
+ 
+    *furniture
+        name:Furniturinators
+        desc:This is getting good, take chair!<//><b>Base Effect:</b><.>Produces 50000 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[furniturep:ps]</b> complex every second.
+        cost:4.44e8 complex
+        on tick:yield 50000 complex
+        on tick:yield 50000 furniturep
+        req:1600000 complex:earned
+        icon:icons[21,21]
+ 
+    *planet
+        name:Planetinators
+        desc:My Very Earnest Mother Just Served Us Nine Pizzas.<//><b>Base Effect:</b><.>Produces 280000 complex per second.<//><b>Effect:</b><.>Currently Makes <b>[planetp:ps]</b> complex every second.
+        cost:6e9 complex
+        on tick:yield 280000 complex
+        on tick:yield 280000 planetp
+        req:27000000 complex:earned
+        icon:icons[24,1]
+ 
+    *meme
+        name:Meminators
+        desc:It what makes us know da wae, to freedom!<//><b>Base Effect:</b><.>Produces 2.3 million complex per second.<//><b>Effect:</b><.>Currently Makes <b>[memep:ps]</b> complex every second.
+        cost:8e10 complex
+        on tick:yield 2300000 complex
+        on tick:yield 2300000 memep
+        req:4.44e8 complex:earned
+ 
+    *train
+        name:Traininators
+        desc:Do you like trains, because I like trains-<//><b>Effect:</b><.>Produces 15 million complex per second.<//><b>Effect:</b><.>Currently Makes <b>[trainp:ps]</b> complex every second.
+        cost:3e12 complex
+        on tick:yield 15000000 complex
+        on tick:yield 15000000 trainp
+        req:6e9 complex:earned
+ 
+    *alien
+        name:Alieninators
+        desc:Everyone, be on the lookout for UFO sightings.<//><b>Base Effect:</b><.>Produces 75 million complex per second.<//><b>Effect:</b><.>Currently Makes <b>[alienp:ps]</b> complex every second.
+        cost:2e13 complex
+        on tick:yield 75000000 complex
+        on tick:yield 75000000 alienp
+        req:8e10 complex:earned
+        icon:icons[8,10]
+ 
+    *light
+        name:Electricitinators
+        desc:Let's light up this world.<//><b>Base Effect:</b><.>Produces 600 million complex per second.<//><b>Effect:</b><.>Currently Makes <b>[lightp:ps]</b> complex every second.
+        cost:1.9e14 complex
+        on tick:yield 600000000 complex
+        on tick:yield 600000000 lightp
+        req:3e12 complex:earned
+        icon:icons[14,30]
+ 
+    *ac
+        name:Almighty Cursorinators
+        desc:Get ready for more cursor puns! They really have a click to it.<//><b>Base Effect:</b><.>Produces 4.5 billion complex per second.<//><b>Effect:</b><.>Currently Makes <b>[acp:ps]</b> complex every second.
+        cost:3.7e15 complex
+        on tick:yield 4500000000 complex
+        on tick:yield 4500000000 acp
+        req:2e13 complex:earned
+        icon:icons[0,30]
+ 
+    *code
+        name:Coders
+        desc:Skilled coders to code complex for you.<//><b>Base Effect:</b><.>Produces 42 billion complex per second.<//><b>Effect:</b><.>Currently Makes <b>[codep:ps]</b> complex every second.
+        cost:5.2e16 complex
+        on tick:yield 42000000000 complex
+        on tick:yield 42000000000 codep
+        req:complexApocUP10
+ 
+    *GFact
+        name:Golden Factories
+        desc:Industrial factories to produce fresh golden complex for you.<//><b>Base Effect:</b><.>Produces 0.5 golden complex per second.<//><b>Effect:</b><.>Currently Makes <b>[GFactp:ps]</b> golden complex every second.
+        cost:200 goldenComplex
+        on tick:yield 0.5 goldenComplex
+        on tick:yield 0.5 GFactp
+        req:gcUP4
+ 
+    *gate
+        name:Gateway
+        desc:Fill up the bar to 100 in order to open the gate to a new building.<//><b>Base Effect:</b><.>Produces 250M golden complex per second.<//><b>Effect:</b><.>Currently Makes <b>[gatep:ps]</b> golden complex every second.<//><b>The gateway is [this]% open.</b>
+        cost:1000000000000 goldenComplex
+        text:Gateway ([this]/100)
+        on tick:yield 250000000 goldenComplex
+        on tick:yield 250000000 gatep
+        limit:100
+        cost increase:105%
+        req:gfUP6 and 200 GFact
+ 
+    *cog
+        name:Cognitive Inators
+        desc:Unlock your inner complex.<//><b>Base Effect:</b><.>Produces 300 billion complex per second.<//><b>Effect:</b><.>Currently Makes <b>[cogp:ps]</b> complex every second.<//><b>This is a special building and won't apply for the +1% click upgrade. The rest of the buildings after this are special buildings.
+        cost:6.2e17 complex
+        on tick:yield 300000000000 complex
+        on tick:yield 300000000000 cogp
+        icon:icons[15,7]
+        req:100 gate
+ 
+    *timerbuild
+        start with:1 time
+        on tick:yield 1 time
+        always hidden
+ 
+Upgrades
+    *TEMPLATE
+        on click:anim glow
+ 
+    //complexapoclypse upgrades
+ 
+    *complexApocUP1
+        name:Inator Research
+        desc:What could possibly keep those inators in check? The people using them.<//><b>Effect:</b><.>Paper is 4 times as efficient<.>Unlocks a new upgrade.
+        cost:1e15 complex
+        passive:multiply yield of paper by 4
+        req:200 paper
+        icon:icons[11,9]
+ 
+    *complexApocUP2
+        name:Specalized mini inators
+        desc:So tiny, which makes them special.<//><b>Effect:</b><.>Complex production multiplier +1%
+        cost:1e15 complex
+        passive:multiply yield of complex by 1.01
+        req:complexApocUP1
+ 
+    *complexApocUP3
+        name:Designer complex syringes
+        desc:Albert Einstein used this in case of a eureka moments or for brainstorming, but it's a secret so forget I told you.<//><b>Effect:</b><.>Complex production multiplier +2%
+        cost:2e15 complex
+        passive:multiply yield of complex by 1.02
+        req:complexApocUP2
+ 
+    *complexApocUP4
+        name:Ritual inator combinations
+        desc:The clue is in one of the names. You have to convert the word into numbers.<//><b>Effect:</b><.>Paper is twice as efficient.
+        cost:4e15 complex
+        passive:multiply yield of paper by 2
+        req:complexApocUP3
+ 
+    *complexApocUP5
+        name:Underworld Inators
+        desc:Also referred as Evilinators, but I swear an evil scientist created this, until he got stopped by an agent.<//><b>Effect:</b><.>Complex production multiplier +3%
+        cost:8e15 complex
+        passive:multiply yield of complex by 1.03
+        req:complexApocUP4
+ 
+    *complexApocUP6
+        name:The mind of a complex
+        desc:It starts now.<//><b>Effect:</b><.>Paperinators are 8 times as efficient
+        cost:1.6e16 complex
+        passive:multiply yield of paper by 8
+        req:complexApocUP5
+ 
+    *complexApocUP7
+        name:Exotic Complex
+        desc:Exclusively fresh from Africa.<//><b>Effect:</b><.>complex production multiplier +4%
+        cost:3.2e16 complex
+        passive:multiply yield of complex by 1.04
+        req:complexApocUP6
+ 
+    *complexApocUP8
+        name:Communal Complexsweep
+        desc:Our evilinators are planning to destroy our complex!!<//><b>Effect:</b><.>Paper is 8 times as efficient.
+        cost:6.4e16 complex
+        passive:multiply yield of paper by 8
+        req:complexApocUP7
+ 
+    *complexApocUP9
+        name:Complex cure
+        desc:Our scientists have found a cure to the evilinator!<//><b>Effect:</b><.>complex production multiplier +5%
+        cost:1.28e17 complex
+        passive:multiply yield of complex by 1.05
+        req:complexApocUP8
+ 
+    *complexApocUP10
+        name:Unblasphemy
+        desc:Some things are worth stopping.<//><b>Effect:</b><.>Paper is 16 times as efficient.
+        cost:2.56e17 complex
+        passive:multiply yield of paper by 16
+        req:complexApocUP9
+ 
+    //click upgrades
+ 
+    *clickUP1
+        name:Plastic Clicks
+        desc:At least it doesn't hurt.<//><b>Effect:</b><.>Clicking and Cursors are twice as efficient
+        cost:110 complex
+        passive:multiply yield of clickButton by 2
+        passive:multiply yield of cursor by 2
+        req:1 cursor
+        icon:icons[0,0]
+ 
+    *clickUP2
+        name:Steeled Clicks
+        desc:It's got clicks of steel<//><b>Effect:</b><.>Clicking and Cursors are twice as efficient
+        cost:550 complex
+        passive:multiply yield of clickButton by 2
+        passive:multiply yield of cursor by 2
+        req:1 cursor
+        icon:icons[0,1]
+ 
+    *clickUP3
+        name:Chain Reaction
+        desc:Gives the satisfaction of combination.<//><b>Effect:</b><.>Clicking and Cursors are twice as efficient
+        cost:15500 complex
+        passive:multiply yield of clickButton by 2
+        passive:multiply yield of cursor by 2
+        req:10 cursor
+        icon:icons[0,2]
+ 
+    *clickUP4
+        name:Thousands Clicks
+        desc:We're getting there, people.<//><b>Effect:</b><.>Clicking and cursors are +0.1 more efficient per building owned
+        cost:155000 complex
+        passive:increase complex yield of clickButton by 0.1*(cursor)
+        passive:increase complex yield of clickButton by 0.1*(paper)
+        passive:increase complex yield of clickButton by 0.1*(house)
+        passive:increase complex yield of clickButton by 0.1*(computer)
+        passive:increase complex yield of clickButton by 0.1*(microwave)
+        passive:increase complex yield of clickButton by 0.1*(music)
+        passive:increase complex yield of clickButton by 0.1*(animation)
+        passive:increase complex yield of clickButton by 0.1*(furniture)
+        passive:increase complex yield of clickButton by 0.1*(planet)
+        passive:increase complex yield of clickButton by 0.1*(meme)
+        passive:increase complex yield of clickButton by 0.1*(train)
+        passive:increase complex yield of clickButton by 0.1*(alien)
+        passive:increase complex yield of clickButton by 0.1*(light)
+        passive:increase complex yield of clickButton by 0.1*(ac)
+        passive:increase complex yield of clickButton by 0.1*(code)
+        passive:increase yield of cursor by 0.1*(paper)
+        passive:increase yield of cursor by 0.1*(house)
+        passive:increase yield of cursor by 0.1*(computer)
+        passive:increase yield of cursor by 0.1*(microwave)
+        passive:increase yield of cursor by 0.1*(music)
+        passive:increase yield of cursor by 0.1*(animation)
+        passive:increase yield of cursor by 0.1*(furniture)
+        passive:increase yield of cursor by 0.1*(planet)
+        passive:increase yield of cursor by 0.1*(meme)
+        passive:increase yield of cursor by 0.1*(train)
+        passive:increase yield of cursor by 0.1*(light)
+        passive:increase yield of cursor by 0.1*(ac)
+        passive:increase yield of cursor by 0.1*(code)
+        req:25 cursor
+        icon:icons[0,13]
+ 
+    *clickUP5
+        name:Million Clicks
+        desc:You've reached a millistone.<//><b>Effect:</b><.>Clicking and cursors are +0.5 more efficient per building owned
+        cost:15500000 complex
+        passive:increase complex yield of clickButton by 0.5*(cursor)
+        passive:increase complex yield of clickButton by 0.5*(paper)
+        passive:increase complex yield of clickButton by 0.5*(house)
+        passive:increase complex yield of clickButton by 0.5*(computer)
+        passive:increase complex yield of clickButton by 0.5*(microwave)
+        passive:increase complex yield of clickButton by 0.5*(music)
+        passive:increase complex yield of clickButton by 0.5*(animation)
+        passive:increase complex yield of clickButton by 0.5*(furniture)
+        passive:increase complex yield of clickButton by 0.5*(planet)
+        passive:increase complex yield of clickButton by 0.5*(meme)
+        passive:increase complex yield of clickButton by 0.5*(train)
+        passive:increase complex yield of clickButton by 0.5*(alien)
+        passive:increase complex yield of clickButton by 0.5*(light)
+        passive:increase complex yield of clickButton by 0.5*(ac)
+        passive:increase complex yield of clickButton by 0.5*(code)
+        passive:increase yield of cursor by 0.5*(paper)
+        passive:increase yield of cursor by 0.5*(house)
+        passive:increase yield of cursor by 0.5*(computer)
+        passive:increase yield of cursor by 0.5*(microwave)
+        passive:increase yield of cursor by 0.5*(music)
+        passive:increase yield of cursor by 0.5*(animation)
+        passive:increase yield of cursor by 0.5*(furniture)
+        passive:increase yield of cursor by 0.5*(planet)
+        passive:increase yield of cursor by 0.5*(meme)
+        passive:increase yield of cursor by 0.5*(train)
+        passive:increase yield of cursor by 0.5*(light)
+        passive:increase yield of cursor by 0.5*(ac)
+        passive:increase yield of cursor by 0.5*(code)
+        req:50 cursor
+        icon:icons[0,14]
+ 
+    *clickUP6
+        name:Billions and Billions
+        desc:I got bill...ion!<//><b>Effect:</b><.>Clicking and cursors are +5 more efficient per building owned
+        cost:155000000 complex
+        passive:increase complex yield of clickButton by 5*(cursor)
+        passive:increase complex yield of clickButton by 5*(paper)
+        passive:increase complex yield of clickButton by 5*(house)
+        passive:increase complex yield of clickButton by 5*(computer)
+        passive:increase complex yield of clickButton by 5*(microwave)
+        passive:increase complex yield of clickButton by 5*(music)
+        passive:increase complex yield of clickButton by 5*(animation)
+        passive:increase complex yield of clickButton by 5*(furniture)
+        passive:increase complex yield of clickButton by 5*(planet)
+        passive:increase complex yield of clickButton by 5*(meme)
+        passive:increase complex yield of clickButton by 5*(train)
+        passive:increase complex yield of clickButton by 5*(alien)
+        passive:increase complex yield of clickButton by 5*(light)
+        passive:increase complex yield of clickButton by 5*(ac)
+        passive:increase complex yield of clickButton by 5*(code)
+        passive:increase yield of cursor by 5*(paper)
+        passive:increase yield of cursor by 5*(house)
+        passive:increase yield of cursor by 5*(computer)
+        passive:increase yield of cursor by 5*(microwave)
+        passive:increase yield of cursor by 5*(music)
+        passive:increase yield of cursor by 5*(animation)
+        passive:increase yield of cursor by 5*(furniture)
+        passive:increase yield of cursor by 5*(planet)
+        passive:increase yield of cursor by 5*(meme)
+        passive:increase yield of cursor by 5*(train)
+        passive:increase yield of cursor by 5*(light)
+        passive:increase yield of cursor by 5*(ac)
+        passive:increase yield of cursor by 5*(code)
+        req:100 cursor
+        icon:icons[0,15]
+ 
+    *clickUP7
+        name:Still a billion
+        desc:I have to pay :(<//><b>Effect:</b><.>Clicking and cursors are +50 more efficient per building owned
+        cost:1550000000 complex
+        passive:increase complex yield of clickButton by 50*(cursor)
+        passive:increase complex yield of clickButton by 50*(paper)
+        passive:increase complex yield of clickButton by 50*(house)
+        passive:increase complex yield of clickButton by 50*(computer)
+        passive:increase complex yield of clickButton by 50*(microwave)
+        passive:increase complex yield of clickButton by 50*(music)
+        passive:increase complex yield of clickButton by 50*(animation)
+        passive:increase complex yield of clickButton by 50*(furniture)
+        passive:increase complex yield of clickButton by 50*(planet)
+        passive:increase complex yield of clickButton by 50*(meme)
+        passive:increase complex yield of clickButton by 50*(train)
+        passive:increase complex yield of clickButton by 50*(alien)
+        passive:increase complex yield of clickButton by 50*(light)
+        passive:increase complex yield of clickButton by 50*(ac)
+        passive:increase complex yield of clickButton by 50*(code)
+        passive:increase yield of cursor by 50*(paper)
+        passive:increase yield of cursor by 50*(house)
+        passive:increase yield of cursor by 50*(computer)
+        passive:increase yield of cursor by 50*(microwave)
+        passive:increase yield of cursor by 50*(music)
+        passive:increase yield of cursor by 50*(animation)
+        passive:increase yield of cursor by 50*(furniture)
+        passive:increase yield of cursor by 50*(planet)
+        passive:increase yield of cursor by 50*(meme)
+        passive:increase yield of cursor by 50*(train)
+        passive:increase yield of cursor by 50*(light)
+        passive:increase yield of cursor by 50*(ac)
+        passive:increase yield of cursor by 50*(code)
+        req:150 cursor
+        icon:icons[0,16]
+ 
+    *clickUP8
+        name:The Power of Clicks
+        desc:In a click of a click.<//><b>Effect:</b><.>Clicking and cursors are +500 more efficient per building owned
+        cost:15500000000 complex
+        passive:increase complex yield of clickButton by 500*(cursor)
+        passive:increase complex yield of clickButton by 500*(paper)
+        passive:increase complex yield of clickButton by 500*(house)
+        passive:increase complex yield of clickButton by 500*(computer)
+        passive:increase complex yield of clickButton by 500*(microwave)
+        passive:increase complex yield of clickButton by 500*(music)
+        passive:increase complex yield of clickButton by 500*(animation)
+        passive:increase complex yield of clickButton by 500*(furniture)
+        passive:increase complex yield of clickButton by 500*(planet)
+        passive:increase complex yield of clickButton by 500*(meme)
+        passive:increase complex yield of clickButton by 500*(train)
+        passive:increase complex yield of clickButton by 500*(alien)
+        passive:increase complex yield of clickButton by 500*(light)
+        passive:increase complex yield of clickButton by 500*(ac)
+        passive:increase complex yield of clickButton by 500*(code)
+        passive:increase yield of cursor by 500*(paper)
+        passive:increase yield of cursor by 500*(house)
+        passive:increase yield of cursor by 500*(computer)
+        passive:increase yield of cursor by 500*(microwave)
+        passive:increase yield of cursor by 500*(music)
+        passive:increase yield of cursor by 500*(animation)
+        passive:increase yield of cursor by 500*(furniture)
+        passive:increase yield of cursor by 500*(planet)
+        passive:increase yield of cursor by 500*(meme)
+        passive:increase yield of cursor by 500*(train)
+        passive:increase yield of cursor by 500*(light)
+        passive:increase yield of cursor by 500*(ac)
+        passive:increase yield of cursor by 500*(code)
+        req:200 cursor
+        icon:icons[0,17]
+ 
+    *clickUP9
+        name:Click of the ancients
+        desc:It's priceless, apart for this upgrade.<//><b>Effect:</b><.>Clicking and cursors are +5K more efficient per building owned
+        cost:15500000000000 complex
+        passive:increase complex yield of clickButton by 5000*(cursor)
+        passive:increase complex yield of clickButton by 5000*(paper)
+        passive:increase complex yield of clickButton by 5000*(house)
+        passive:increase complex yield of clickButton by 5000*(computer)
+        passive:increase complex yield of clickButton by 5000*(microwave)
+        passive:increase complex yield of clickButton by 5000*(music)
+        passive:increase complex yield of clickButton by 5000*(animation)
+        passive:increase complex yield of clickButton by 5000*(furniture)
+        passive:increase complex yield of clickButton by 5000*(planet)
+        passive:increase complex yield of clickButton by 5000*(meme)
+        passive:increase complex yield of clickButton by 5000*(train)
+        passive:increase complex yield of clickButton by 5000*(alien)
+        passive:increase complex yield of clickButton by 5000*(light)
+        passive:increase complex yield of clickButton by 5000*(ac)
+        passive:increase complex yield of clickButton by 5000*(code)
+        passive:increase yield of cursor by 5000*(paper)
+        passive:increase yield of cursor by 5000*(house)
+        passive:increase yield of cursor by 5000*(computer)
+        passive:increase yield of cursor by 5000*(microwave)
+        passive:increase yield of cursor by 5000*(music)
+        passive:increase yield of cursor by 5000*(animation)
+        passive:increase yield of cursor by 5000*(furniture)
+        passive:increase yield of cursor by 5000*(planet)
+        passive:increase yield of cursor by 5000*(meme)
+        passive:increase yield of cursor by 5000*(train)
+        passive:increase yield of cursor by 5000*(light)
+        passive:increase yield of cursor by 5000*(ac)
+        passive:increase yield of cursor by 5000*(code)
+        req:250 cursor
+        icon:icons[0,18]
+ 
+    *clickUP10
+        name:Clickception
+        desc:Haha, click to the power of 2.<//><b>Effect:</b><.>Clicking and cursors are +50K more efficient per building owned
+        cost:15500000000000000 complex
+        passive:increase complex yield of clickButton by 50000*(cursor)
+        passive:increase complex yield of clickButton by 50000*(paper)
+        passive:increase complex yield of clickButton by 50000*(house)
+        passive:increase complex yield of clickButton by 50000*(computer)
+        passive:increase complex yield of clickButton by 50000*(microwave)
+        passive:increase complex yield of clickButton by 50000*(music)
+        passive:increase complex yield of clickButton by 50000*(animation)
+        passive:increase complex yield of clickButton by 50000*(furniture)
+        passive:increase complex yield of clickButton by 50000*(planet)
+        passive:increase complex yield of clickButton by 50000*(meme)
+        passive:increase complex yield of clickButton by 50000*(train)
+        passive:increase complex yield of clickButton by 50000*(alien)
+        passive:increase complex yield of clickButton by 50000*(light)
+        passive:increase complex yield of clickButton by 50000*(ac)
+        passive:increase complex yield of clickButton by 50000*(code)
+        passive:increase yield of cursor by 50000*(paper)
+        passive:increase yield of cursor by 50000*(house)
+        passive:increase yield of cursor by 50000*(computer)
+        passive:increase yield of cursor by 50000*(microwave)
+        passive:increase yield of cursor by 50000*(music)
+        passive:increase yield of cursor by 50000*(animation)
+        passive:increase yield of cursor by 50000*(furniture)
+        passive:increase yield of cursor by 50000*(planet)
+        passive:increase yield of cursor by 50000*(meme)
+        passive:increase yield of cursor by 50000*(train)
+        passive:increase yield of cursor by 50000*(light)
+        passive:increase yield of cursor by 50000*(ac)
+        passive:increase yield of cursor by 50000*(code)
+        req:300 cursor
+        icon:icons[0,19]
+ 
+    *clickUP11
+        name:Clash of Clicks
+        desc:The battle of cursors fighting for glory.<//><b>Effect:</b><.>Clicking and cursors are +500K more efficient per building owned
+        cost:1.55e19 complex
+        passive:increase complex yield of clickButton by 500000*(cursor)
+        passive:increase complex yield of clickButton by 500000*(paper)
+        passive:increase complex yield of clickButton by 500000*(house)
+        passive:increase complex yield of clickButton by 500000*(computer)
+        passive:increase complex yield of clickButton by 500000*(microwave)
+        passive:increase complex yield of clickButton by 500000*(music)
+        passive:increase complex yield of clickButton by 500000*(animation)
+        passive:increase complex yield of clickButton by 500000*(furniture)
+        passive:increase complex yield of clickButton by 500000*(planet)
+        passive:increase complex yield of clickButton by 500000*(meme)
+        passive:increase complex yield of clickButton by 500000*(train)
+        passive:increase complex yield of clickButton by 500000*(alien)
+        passive:increase complex yield of clickButton by 500000*(light)
+        passive:increase complex yield of clickButton by 500000*(ac)
+        passive:increase complex yield of clickButton by 500000*(code)
+        passive:increase yield of cursor by 500000*(paper)
+        passive:increase yield of cursor by 500000*(house)
+        passive:increase yield of cursor by 500000*(computer)
+        passive:increase yield of cursor by 500000*(microwave)
+        passive:increase yield of cursor by 500000*(music)
+        passive:increase yield of cursor by 500000*(animation)
+        passive:increase yield of cursor by 500000*(furniture)
+        passive:increase yield of cursor by 500000*(planet)
+        passive:increase yield of cursor by 500000*(meme)
+        passive:increase yield of cursor by 500000*(train)
+        passive:increase yield of cursor by 500000*(light)
+        passive:increase yield of cursor by 500000*(ac)
+        passive:increase yield of cursor by 500000*(code)
+        req:350 cursor
+        icon:icons[0,21]
+ 
+    *clickUP12
+        name:Clickemon
+        desc:Gotta catch em' clicks!<//><b>Effect:</b><.>Clicking and cursors are +5M more efficient per building owned
+        cost:1.55e22 complex
+        passive:increase complex yield of clickButton by 5000000*(cursor)
+        passive:increase complex yield of clickButton by 5000000*(paper)
+        passive:increase complex yield of clickButton by 5000000*(house)
+        passive:increase complex yield of clickButton by 5000000*(computer)
+        passive:increase complex yield of clickButton by 5000000*(microwave)
+        passive:increase complex yield of clickButton by 5000000*(music)
+        passive:increase complex yield of clickButton by 5000000*(animation)
+        passive:increase complex yield of clickButton by 5000000*(furniture)
+        passive:increase complex yield of clickButton by 5000000*(planet)
+        passive:increase complex yield of clickButton by 5000000*(meme)
+        passive:increase complex yield of clickButton by 5000000*(train)
+        passive:increase complex yield of clickButton by 5000000*(alien)
+        passive:increase complex yield of clickButton by 5000000*(light)
+        passive:increase complex yield of clickButton by 5000000*(ac)
+        passive:increase complex yield of clickButton by 5000000*(code)
+        passive:increase yield of cursor by 5000000*(paper)
+        passive:increase yield of cursor by 5000000*(house)
+        passive:increase yield of cursor by 5000000*(computer)
+        passive:increase yield of cursor by 5000000*(microwave)
+        passive:increase yield of cursor by 5000000*(music)
+        passive:increase yield of cursor by 5000000*(animation)
+        passive:increase yield of cursor by 5000000*(furniture)
+        passive:increase yield of cursor by 5000000*(planet)
+        passive:increase yield of cursor by 5000000*(meme)
+        passive:increase yield of cursor by 5000000*(train)
+        passive:increase yield of cursor by 5000000*(light)
+        passive:increase yield of cursor by 5000000*(ac)
+        passive:increase yield of cursor by 5000000*(code)
+        req:400 cursor
+        icon:icons[0,28]
+ 
+    //clicking upgrades
+ 
+    *clickingUP1
+        name:Light Clicking
+        desc:Not so heavy, very easy to hold.<//><b>Effect:</b><.>Clicking gains 0.01% of your CpS.
+        cost:50000 complex
+        req:1000 complex:earned
+        icon:icons[11,0]
+ 
+    //building upgrades
+ 
+    *paperUP1
+        name:Paper Stains
+        desc:Why is there always stain on the paper? Do the people just accidentally tip they're coffee on the paper off-screen or something?<//><b>Effect:</b><.>Paperinators are twice as efficient
+        cost:1300 complex
+        passive:multiply yield of paper by 2
+        req:1 paper
+        icon:icons[27,7]
+ 
+    *paperUP2
+        name:Origami
+        desc:You can raise your own paper animals with these.<//><b>Effect:</b><.>Paperinators are twice as efficient
+        cost:6500 complex
+        passive:multiply yield of paper by 2
+        req:5 paper
+        icon:icons[27,7]
+ 
+    *paperUP3
+        name:Paper Airplanes
+        desc:One of our leaders have passed away in the paper wars. Only our team members can say R.I.P to him.<//><b>Effect:</b><.>Paperinators are twice as efficient
+        cost:65000 complex
+        passive:multiply yield of paper by 2
+        req:25 paper
+        icon:icons[27,7]
+ 
+    *paperUP4
+        name:Tear Words
+        desc:These parents gotta deal with this sheet.<//><b>Effect:</b><.>Paperinators are twice as efficient
+        cost:6500000 complex
+        passive:multiply yield of paper by 2
+        req:50 paper
+        icon:icons[27,7]
+ 
+    *paperUP5
+        name:Paper Fighters
+        desc:In the PPE championships, one of our best players got beaten to a pulp, poor him.<//><b>Effect:</b><.>Paperinators are twice as efficient
+        cost:650000000 complex
+        passive:multiply yield of paper by 2
+        req:100 paper
+        icon:icons[27,7]
+ 
+    *paperUP6
+        name:Papery Progress
+        desc:If you got this upgrade, you're on a roll!<//><b>Effect:</b><.>Paperinators are twice as efficient
+        cost:65000000000 complex
+        passive:multiply yield of paper by 2
+        req:150 paper
+        icon:icons[27,7]
+ 
+   *houseUP1
+        name:Lighthouse
+        desc:It's a light house, it's much easier to move now.<//><b>Effect:</b><.>Houses are twice as efficient
+        cost:16000 complex
+        passive:multiply yield of house by 2
+        req:1 house
+        icon:icons[2,6]
+ 
+   *houseUP2
+        name:Bizzare Properties
+        desc:It's a surreal estate!<//><b>Effect:</b><.>Houses are twice as efficient
+        cost:80000 complex
+        passive:multiply yield of house by 2
+        req:5 house
+        icon:icons[3,6]
+ 
+   *houseUP3
+        name:Doors
+        desc:These are the most important parts of a house, it's like a guide to a place, a start to a journey to worlds beyond, a miraculous adventure as you venture around the rooms, gazing your eyes at beautiful scenery in your own residence. Oh man, lets not forget about the doorknob, mustn't forget about that. Actually, no, doorknobs are not that exhilarating.<//><b>Effect:</b><.>Houses are twice as efficient.
+        cost:800000 complex
+        passive:multiply yield of house by 2
+        req:25 house
+        icon:icons[4,6]
+ 
+   *houseUP4
+        name:Bounce House
+        desc:Remember at our friends parties where we just bounce happily on trampolines and those bounce pads? Good times, good times. But we can't let them be a memory, the housinator allows you to spawn bounce houses now so there's plenty of fun memories to cherish- I'm sorry I need to get tissues now!<//><b>Effect:</b><.>Houses are twice as efficient.
+        cost:80000000 complex
+        passive:multiply yield of house by 2
+        req:50 house
+        icon:icons[5,6]
+ 
+   *houseUP5
+        name:Doorbells
+        desc:You wouldn't want people furiously banging on your door, would you? And you wouldn't want your ears to bleed as the person presses the doorbell furiously, would you? Well, now you can set the volume of the doorbell to anything you want! Keep out of reach of children, they're malicious troublemakers.<//><b>Effect:</b><.>Houses are twice as efficient.
+        cost:8e9 complex
+        passive:multiply yield of house by 2
+        req:100 house
+        icon:icons[5,6]
+ 
+   *houseUP6
+        name:Purple bricks
+        desc:Ah, stupidity: the stupidity you feel when you spent thousands on normal bricks in a low quality company but then you got purple bricks instead.<//><b>Effect:</b><.>Houses are twice as efficient.
+        cost:8e11 complex
+        passive:multiply yield of house by 2
+        req:150 house
+        icon:icons[5,6]
+ 
+   *computerUP1
+        name:Enhanced Keyboards
+        desc:You're fingers will be dancing on them all night.<//><b>Effect:</b><.>Computers are twice as efficient.
+        cost:200000 complex
+        passive:multiply yield of computer by 2
+        req:1 computer
+ 
+   *computerUP2
+        name:Clean Screenshots
+        desc:Not too many, or else your computer will crash out.<//><b>Effect:</b><.>Computers are twice as efficient.
+        cost:1000000 complex
+        passive:multiply yield of computer by 2
+        req:5 computer
+ 
+   *computerUP3
+        name:Cute computers
+        desc:In fact, too cute to compute, so that was a bad idea.<//><b>Effect:</b><.>Computers are twice as efficient.
+        cost:10000000 complex
+        passive:multiply yield of computer by 2
+        req:25 computer
+ 
+   *computerUP4
+        name:Edible machinery
+        desc:They make a good byte.<//><b>Effect:</b><.>Computers are twice as efficient.
+        cost:1000000000 complex
+        passive:multiply yield of computer by 2
+        req:50 computer
+ 
+   *computerUP5
+        name:Big Mac's
+        desc:Surprisingly enough, they have it at Currys PC World... and curry.<//><b>Effect:</b><.>Computers are twice as efficient.
+        cost:100000000000 complex
+        passive:multiply yield of computer by 2
+        req:100 computer
+ 
+   *computerUP6
+        name:Cats
+        desc:Bored on your computer? Get a cat and it'll totally make your day, think of your cat as a close online gaming buddy!<//><b>Effect:</b><.>Computers are twice as efficient.
+        cost:10000000000000 complex
+        passive:multiply yield of computer by 2
+        req:150 computer
+ 
+   *microwaveUP1
+        name:Friendly Micro-particles
+        desc:Sending you a microwave!<//><b>Effect:</b><.>Microwaves are twice as efficient.
+        cost:1650000 complex
+        passive:multiply yield of microwave by 2
+        req:1 microwave
+ 
+   *microwaveUP2
+        name:Particle factory
+        desc:The hot particles work in the microwave, making sure they dispatch radiation around it, the weird thing is, is that they <i>have</i> to burn themselves out, creating MORE particles. It's like a safer version of labor.<//><b>Effect:</b><.>Microwaves are twice as efficient.
+        cost:8250000 complex
+        passive:multiply yield of microwave by 2
+        req:5 microwave
+ 
+   *microwaveUP3
+        name:Energy Exchange
+        desc:A cold bowl, with hot food.<//><b>Effect:</b><.>Microwaves are twice as efficient.
+        cost:82500000 complex
+        passive:multiply yield of microwave by 2
+        req:25 microwave
+ 
+   *microwaveUP4
+        name:Time warp
+        desc:Instant warming for turkey! Your family will be proud of you on Thanksgiving.<//><b>Effect:</b><.>Microwaves are twice as efficient.
+        cost:8250000000 complex
+        passive:multiply yield of microwave by 2
+        req:50 microwave
+ 
+   *microwaveUP5
+        name:Ultraheat
+        desc:You'll need some insulators.<//><b>Effect:</b><.>Microwaves are twice as efficient.
+        cost:825000000000 complex
+        passive:multiply yield of microwave by 2
+        req:100 microwave
+ 
+   *microwaveUP6
+        name:Bite-size microwave
+        desc:You can take them on the go, with bite-size plugs and sockets, but don't eat them, unless you're stupid.<//><b>Effect:</b><.>Microwaves are twice as efficient.
+        cost:82500000000000 complex
+        passive:multiply yield of microwave by 2
+        req:150 microwave
+ 
+   *musicUP1
+        name:Accurate Beats
+        desc:Timing *beat drops* is everything!<//><b>Effect:</b><.>Music is twice as efficient.
+        cost:1.6e7 complex
+        passive:multiply yield of music by 2
+        req:1 music
+        icon:icons[28,6]
+ 
+   *musicUP2
+        name:New dance craze
+        desc:The crowd praises you.<//><b>Effect:</b><.>Music is twice as efficient.
+        cost:9e7 complex
+        passive:multiply yield of music by 2
+        req:5 music
+        icon:icons[28,6]
+ 
+   *musicUP3
+        name:Telepathic headphones
+        desc:You'll be the smartest person alive.<//><b>Effect:</b><.>Music is twice as efficient.
+        cost:9e8 complex
+        passive:multiply yield of music by 2
+        req:25 music
+        icon:icons[28,6]
+ 
+   *musicUP4
+        name:Music zen
+        desc:The ultimate grail of pop, the feng shui of dubstep, the rock yoga, the fact I ripped this flavor text off from Cookie Clicker.<//><b>Effect:</b><.>Music is twice as efficient.
+        cost:9e10 complex
+        passive:multiply yield of music by 2
+        req:50 music
+        icon:icons[28,6]
+ 
+   *musicUP5
+        name:Abnormal reaction
+        desc:You've proven to the public that music can make your reflexes impossible to replicate, unless people use the musicinator.<//><b>Effect:</b><.>Music is twice as efficient.
+        cost:9e12 complex
+        passive:multiply yield of music by 2
+        req:100 music
+        icon:icons[28,6]
+ 
+   *musicUP6
+        name:Techno Rock
+        desc:Somehow it doesn't make the elderly's ears bleed.<//><b>Effect:</b><.>Music is twice as efficient.
+        cost:9e14 complex
+        passive:multiply yield of music by 2
+        req:150 music
+        icon:icons[28,6]
+ 
+   *animationUP1
+        name:Infinity FPS
+        desc:People with no life can make a 5 second bouncing ball animation with this frames per second.<//><b>Effect:</b><.>Animations are twice as efficient.
+        cost:2.7e8 complex
+        passive:multiply yield of animation by 2
+        req:1 animation
+ 
+   *animationUP2
+        name:Super tweening
+        desc:Don't know what this does, but prepare yourself for an excessive use of elasticity in the animated characters.<//><b>Effect:</b><.>Animations are twice as efficient.
+        cost:1.35e9 complex
+        passive:multiply yield of animation by 2
+        req:5 animation
+ 
+   *animationUP3
+        name:Onions
+        desc:I like the use of this, but the fact you need Premium on FlipaClip in order to get Onion advanced settings will surely make a person cry.<//><b>Effect:</b><.>Animations are twice as efficient.
+        cost:1.35e10 complex
+        passive:multiply yield of animation by 2
+        req:25 animation
+ 
+   *animationUP4
+        name:5D animation
+        desc:Before you ask, it's not 2D mixed with 3D, TAWOG (The Amazing World Of Gumball) can do that. It's the mysterious dimension where in order to summon it's majestic features, you must state the 12 principles of animation, 12 times!<//><b>Effect:</b><.>Animations are twice as efficient.
+        cost:1.35e12 complex
+        passive:multiply yield of animation by 2
+        req:50 animation
+ 
+   *animationUP5
+        name:Drawn Predicition
+        desc:You've drawn yourself to the point where an AI can predict what you're trying to draw very well and would do part of the drawing for you!<//><b>Effect:</b><.>Animations are twice as efficient.
+        cost:1.35e14 complex
+        passive:multiply yield of animation by 2
+        req:100 animation
+ 
+   *animationUP6
+        name:Infinite Layers
+        desc:The next generation of hand-drawn animation, if you thought it couldn't get any smoother, you're wrong there, my friend.<//><b>Effect:</b><.>Animations are twice as efficient.
+        cost:1.35e16 complex
+        passive:multiply yield of animation by 2
+        req:150 animation
+ 
+   *furnitureUP1
+        name:Rockwheel chairs
+        desc:Specially designed for the people that want to rock and roll!<//><b>Effect:</b><.>Furniture is twice as efficient.
+        cost:4.4e9 complex
+        passive:multiply yield of furniture by 2
+        req:1 furniture
+        icon:icons[21,21]
+ 
+   *furnitureUP2
+        name:Space chairs
+        desc:Travelling through time and space would be a breeze. Worst case scenario, you get lazy and steal Abraham Lincoln's chair, only to realize it doesn't actually make you travel through time and space.<//><b>Effect:</b><.>Furniture is twice as efficient.
+        cost:2.2e10 complex
+        passive:multiply yield of furniture by 2
+        req:5 furniture
+        icon:icons[22,21]
+ 
+   *furnitureUP3
+        name:Periodic Pillow
+        desc:Use this pillow periodically, please, as it has 3 uses.<//><b>Effect:</b><.>Furniture is twice as efficient.
+        cost:2.2e11 complex
+        passive:multiply yield of furniture by 2
+        req:25 furniture
+        icon:icons[23,21]
+ 
+   *furnitureUP4
+        name:Superflipping tables
+        desc:They're flippin' flipping!<//><b>Effect:</b><.>Furniture is twice as efficient.
+        cost:2.2e13 complex
+        passive:multiply yield of furniture by 2
+        req:50 furniture
+        icon:icons[24,21]
+ 
+   *furnitureUP5
+        name:Storm fans
+        desc:You'll be blown away when you get this.<//><b>Effect:</b><.>Furniture is twice as efficient.
+        cost:2.2e15 complex
+        passive:multiply yield of furniture by 2
+        req:100 furniture
+        icon:icons[25,21]
+ 
+   *furnitureUP6
+        name:Everything proof walls
+        desc:Just what you need for some peace and quiet.<//><b>Effect:</b><.>Furniture is twice as efficient.
+        cost:2.2e17 complex
+        passive:multiply yield of furniture by 2
+        req:150 furniture
+        icon:icons[25,21]
+ 
+   *planetUP1
+        name:Complex planets
+        desc:Too complex that you need a space identity passport, bus and a Lamborghini membership all-in-one premium nitro card to access.<//><b>Effect:</b><.>Planets are twice as efficient.
+        cost:6e10 complex
+        passive:multiply yield of planet by 2
+        req:1 planet
+ 
+   *planetUP2
+        name:Expanded universe
+        desc:Doesn't it already expand, genius?<//><b>Effect:</b><.>Planets are twice as efficient.
+        cost:3e11 complex
+        passive:multiply yield of planet by 2
+        req:5 planet
+ 
+   *planetUP3
+        name:Party planet
+        desc:One must planet to have it.<//><b>Effect:</b><.>Planets are twice as efficient.
+        cost:3e12 complex
+        passive:multiply yield of planet by 2
+        req:25 planet
+ 
+   *planetUP4
+        name:Transport tubes
+        desc:For coming up with something this special, you're outta this world!<//><b>Effect:</b><.>Planets are twice as efficient.
+        cost:3e14 complex
+        passive:multiply yield of planet by 2
+        req:50 planet
+ 
+   *planetUP5
+        name:Really rotating rovers
+        desc:Over 9000 degrees!<//><b>Effect:</b><.>Planets are twice as efficient.
+        cost:3e16 complex
+        passive:multiply yield of planet by 2
+        req:100 planet
+ 
+   *planetUP6
+        name:Dome hubs
+        desc:Where lifeforms come to grow in this 100% fresh pure air and decent atmosphere. As they develop they come to know each other in their own way and send communications from other planets through the transport tubes. It's like Discord except it's not about gaming.<//><b>Effect:</b><.>Planets are twice as efficient.
+        cost:3e18 complex
+        passive:multiply yield of planet by 2
+        req:150 planet
+ 
+   *memeUP1
+        name:Fidget Spinner
+        desc:You'll leave yourself guessing for countless hours whether it'll come out from its grave again.<//><b>Effect:</b><.>Memes are twice as efficient.
+        cost:8e11 complex
+        passive:multiply yield of meme by 2
+        req:1 meme
+ 
+   *memeUP2
+        name:Rubix Cube
+        desc:For geniuses to get their minds working. One day, you'll become dedicated to try out this and get addicted. But not as much as the addiction from this game, please.<//><b>Effect:</b><.>Memes are twice as efficient.
+        cost:4e12 complex
+        passive:multiply yield of meme by 2
+        req:5 meme
+ 
+   *memeUP3
+        name:Sonic
+        desc:Not Sanic, the one from the movie, the meme was a hit and the movie wasn't even released at that time!<//><b>Effect:</b><.>Memes are twice as efficient.
+        cost:4e13 complex
+        passive:multiply yield of meme by 2
+        req:25 meme
+ 
+   *memeUP4
+        name:Yes, but actually no
+        desc:Is this meme dead? Yes, but actually no. Is this upgrade worth it? Just yes.<//><b>Effect:</b><.>Memes are twice as efficient.
+        cost:4e15 complex
+        passive:multiply yield of meme by 2
+        req:50 meme
+ 
+   *memeUP5
+        name:One does not simply
+        desc:One does not simply continue playing the game without buying this upgrade.<//><b>Effect:</b><.>Memes are twice as efficient.
+        cost:4e17 complex
+        passive:multiply yield of meme by 2
+        req:100 meme
+ 
+   *memeUP6
+        name:Success Kid
+        desc:If you got this upgrade, you're a success, kid.<//><b>Effect:</b><.>Memes are twice as efficient.
+        cost:4e19 complex
+        passive:multiply yield of meme by 2
+        req:150 meme
+ 
+   *trainUP1
+        name:Friction less Wheels
+        desc:Proud Wheels keep on rolling!<//><b>Effect:</b><.>Trains are twice as efficient.
+        cost:3e13 complex
+        passive:multiply yield of train by 2
+        req:1 train
+ 
+   *trainUP2
+        name:Hydrogenic Steam
+        desc:Steam is steam and Hydrogen is H.<//><b>Effect:</b><.>Trains are twice as efficient.
+        cost:1.5e14 complex
+        passive:multiply yield of train by 2
+        req:5 train
+ 
+   *trainUP3
+        name:Acid Train
+        desc:Chugs along with acid rain pouring through, this train is immune to the rain and can make powerful substances and materials with it.<//><b>Effect:</b><.>Trains are twice as efficient.
+        cost:1.5e15 complex
+        passive:multiply yield of train by 2
+        req:25 train
+ 
+   *trainUP4
+        name:Singin' in the Train
+        desc:I'm singing in the train, just singing in the train, what a glorious feelin', I'm happy again, I'm laughing at clouds, so dark up above, the sun's in my heart, and I'm ready for new trains, let the stormy clouds chase, everyone from the place, come on with the train!<//><b>Effect:</b><.>Trains are twice as efficient.
+        cost:1.5e17 complex
+        passive:multiply yield of train by 2
+        req:50 train
+ 
+   *trainUP5
+        name:Deep train simulation
+        desc:Its just a typical train with people just sitting down i-- Oh my gosh, I can touch through the things, is this heaven?<//><b>Effect:</b><.>Trains are twice as efficient.
+        cost:1.5e19 complex
+        passive:multiply yield of train by 2
+        req:100 train
+ 
+   *trainUP6
+        name:The Devil's Train
+        desc:Some say you can hear distant chanting noises...<//><b>Effect:</b><.>Trains are twice as efficient.
+        cost:1.5e21 complex
+        passive:multiply yield of train by 2
+        req:150 train
+ 
+   *alienUP1
+        name:Gibberish greetings
+        desc:Too bad you don't have a translator.<//><b>Effect:</b><.>Aliens are twice as efficient.
+        cost:2e14 complex
+        passive:multiply yield of alien by 2
+        req:1 alien
+        icon:icons[8,10]
+ 
+   *alienUP2
+        name:Universal translator
+        desc:You can communicate with all the alien species now!<//><b>Effect:</b><.>Aliens are twice as efficient.
+        cost:1e15 complex
+        passive:multiply yield of alien by 2
+        req:5 alien
+        icon:icons[8,10]
+ 
+   *alienUP3
+        name:Impress the aliens
+        desc:The aliens have given you tasks to do in order to prove yourself worthy of being the king of their planet.<//><b>Effect:</b><.>Aliens are twice as efficient.
+        cost:1e16 complex
+        passive:multiply yield of alien by 2
+        req:25 alien
+        icon:icons[8,10]
+ 
+   *alienUP4
+        name:Gravitational boots
+        desc:They allow you to run at Earth gravity, no slowness, you'll get these tasks done in no time.<//><b>Effect:</b><.>Aliens are twice as efficient.
+        cost:1e18 complex
+        passive:multiply yield of alien by 2
+        req:50 alien
+        icon:icons[8,10]
+ 
+   *alienUP5
+        name:Killing king quest
+        desc:Now you must defeat the previous ruler of Aliplanet, but how will you accomplish this daring mission?<//><b>Effect:</b><.>Aliens are twice as efficient.
+        cost:1e20 complex
+        passive:multiply yield of alien by 2
+        req:100 alien
+        icon:icons[8,10]
+ 
+   *alienUP6
+        name:Galactic Sword
+        desc:You've managed to rack up as much complex to craft a galactic sword, let the battle commence...<//><b>Effect:</b><.>Aliens are twice as efficient.
+        cost:1e22 complex
+        passive:multiply yield of alien by 2
+        req:150 alien
+        icon:icons[8,10]
+ 
+   *lightUP1
+        name:Bulb workout
+        desc:Burn, baby, burn! Shine, I mean...<//><b>Effect:</b><.>Electricity is twice as efficient.
+        cost:1.9e15 complex
+        passive:multiply yield of light by 2
+        req:1 light
+        icon:icons[14,0]
+ 
+   *lightUP2
+        name:The result
+        desc:After workout, they're sure light.<//><b>Effect:</b><.>Electricity is twice as efficient.
+        cost:9.5e15 complex
+        passive:multiply yield of light by 2
+        req:5 light
+        icon:icons[14,1]
+ 
+   *lightUP3
+        name:Light rap
+        desc:Can I get a watt watt!<//><b>Effect:</b><.>Electricity is twice as efficient.
+        cost:9.5e16 complex
+        passive:multiply yield of light by 2
+        req:25 light
+        icon:icons[14,2]
+ 
+   *lightUP4
+        name:Bad light
+        desc:They end up in prism. Specific Cookie Clicker building, take the bad light away!<//><b>Effect:</b><.>Electricity is twice as efficient.
+        cost:9.5e18 complex
+        passive:multiply yield of light by 2
+        req:50 light
+        icon:icons[14,14]
+ 
+   *lightUP5
+        name:Happy light
+        desc:They're de-lighted to light up in the dark times.<//><b>Effect:</b><.>Electricity is twice as efficient.
+        cost:9.5e20 complex
+        passive:multiply yield of light by 2
+        req:100 light
+        icon:icons[14,15]
+ 
+   *lightUP6
+        name:Light capture measures
+        desc:<//><b>Effect:</b><.>Electricity is twice as efficient.<//><q>As the universe gets ever so slightly dimmer due to you converting more and more of its light into cookies, you've taken to finding new and unexplored sources of light for your prisms; for instance, the warm glow emitted by a pregnant woman, or the twinkle in the eye of a hopeful child. Oh no, Incremental got lazy again.</q>
+        cost:9.5e22 complex
+        passive:multiply yield of light by 2
+        req:150 light
+        icon:icons[14,16]
+ 
+   *acUP1
+        name:Clicklords
+        desc:Respect them, give them mouses.<//><b>Effect:</b><.>Almighty Cursors are twice as efficient.
+        cost:3.7e16 complex
+        passive:multiply yield of ac by 2
+        req:1 ac
+        icon:icons[12,30]
+ 
+   *acUP2
+        name:Angry Cursors
+        desc:Pop those bad arthritis'!<//><b>Effect:</b><.>Almighty Cursors are twice as efficient.
+        cost:1.85e17 complex
+        passive:multiply yield of ac by 2
+        req:5 ac
+        icon:icons[12,31]
+ 
+   *acUP3
+        name:Alto's Clickodyssey
+        desc:Skiing down Cursor Valley.<//><b>Effect:</b><.>Almighty Cursors are twice as efficient.
+        cost:1.85e18 complex
+        passive:multiply yield of ac by 2
+        req:25 ac
+        icon:icons[12,31]
+ 
+   *acUP4
+        name:2048
+        desc:Translated to 'Clik'.<//><b>Effect:</b><.>Almighty Cursors are twice as efficient.
+        cost:1.85e20 complex
+        passive:multiply yield of ac by 2
+        req:50 ac
+        icon:icons[12,31]
+ 
+   *acUP5
+        name:Clickmonument Valley
+        desc:A lot of mind-clicking puzzles to keep you clicking!<//><b>Effect:</b><.>Almighty Cursors are twice as efficient.
+        cost:1.85e22 complex
+        passive:multiply yield of ac by 2
+        req:100 ac
+        icon:icons[12,31]
+ 
+   *acUP6
+        name:Clickometry Dash
+        desc:Only on computer, for obvious reasons.<//><b>Effect:</b><.>Almighty Cursors are twice as efficient.
+        cost:1.85e24 complex
+        passive:multiply yield of ac by 2
+        req:150 ac
+        icon:icons[12,31]
+ 
+   *codeUP1
+        name:Text Editor
+        desc:I guess all coders will have to go for pastebin, which is what this game was typed on.<//><b>Effect:</b><.>Coders are twice as efficient.
+        cost:5.2e17 complex
+        passive:multiply yield of code by 2
+        icon:icons[32,0]
+        req:1 code
+ 
+   *codeUP2
+        name:Python
+        desc:One of the easiest coding fundamentals. Especially for math.<//><b>Effect:</b><.>Coders are twice as efficient.
+        cost:2.6e18 complex
+        passive:multiply yield of code by 2
+        icon:icons[32,1]
+        req:5 code
+ 
+   *codeUP3
+        name:HTML 5
+        desc:Taking it a step further, we have another coding fundamental for making websites, like Idle Game Maker I suppose.<//><b>Effect:</b><.>Coders are twice as efficient.
+        cost:2.6e19 complex
+        passive:multiply yield of code by 2
+        icon:icons[32,2]
+        req:25 code
+ 
+   *codeUP4
+        name:CSS
+        desc:Also known as custom style sheet, which is for pictures and the design of your game interface.<//><b>Effect:</b><.>Coders are twice as efficient.
+        cost:2.6e21 complex
+        passive:multiply yield of code by 2
+        icon:icons[32,28]
+        req:50 code
+ 
+   *codeUP5
+        name:JavaScript
+        desc:And now for JavaScript, the most popular and advanced coding fundamentals ever, best suited for our skilled coders.<//><b>Effect:</b><.>Coders are twice as efficient.
+        cost:2.6e23 complex
+        passive:multiply yield of code by 2
+        icon:icons[32,30]
+        req:100 code
+ 
+   *codeUP6
+        name:Morse Code
+        desc:-- --- .-. ... . / -.-. --- -.. . / .. ... / .- -. --- - .... . .-. / .-- .- -.-- / --- ..-. / --- ..- .-. / ... -.- .. .-.. .-.. . -.. / -.-. --- -.. . .-. ... / -.-. --- -- -- ..- -. .. -.-. .- - .. -. --. / .-- .. - .... / . .- -.-. .... / --- - .... . .-. / .- -. -.. / .- .-.. ... --- / .- -. --- - .... . .-. / .-- .- -.-- / - --- / --- ..- - .--. ..- - / ..-. .-. . ... .... / -.-. --- -- .--. .-.. . -..- .-.-.-<//><b>Effect:</b><.>Coders are twice as efficient.
+        cost:2.6e25 complex
+        passive:multiply yield of code by 2
+        icon:icons[32,31]
+        req:150 code
+ 
+   *cogUP1
+        name:Complex Thoughts
+        desc:Think bigger, think complex.<//><b>Effect:</b><.>Cognitive Inators are twice as efficient.
+        cost:6.2e18 complex
+        passive:multiply yield of cog by 2
+        icon:icons[15,7]
+        req:1 cog
+ 
+   *cogUP2
+        name:Complex Further
+        desc:Don't stop when you're tired, stop when you're done.<//><b>Effect:</b><.>Cognitive Inators are twice as efficient.
+        cost:3.1e19 complex
+        passive:multiply yield of cog by 2
+        icon:icons[15,7]
+        req:5 cog
+ 
+   *cogUP3
+        name:The Production
+        desc:Wake up with idle earnings, go to bed with satisfaction.<//><b>Effect:</b><.>Cognitive Inators are twice as efficient.
+        cost:3.1e20 complex
+        passive:multiply yield of cog by 2
+        icon:icons[15,7]
+        req:25 cog
+ 
+   *cogUP4
+        name:Complex Days
+        desc:Little goals make big progress.<//><b>Effect:</b><.>Cognitive Inators are twice as efficient.
+        cost:3.1e22 complex
+        passive:multiply yield of cog by 2
+        icon:icons[15,7]
+        req:50 cog
+ 
+   *cogUP5
+        name:Always Possible
+        desc:Hard does not mean impossible.<//><b>Effect:</b><.>Cognitive Inators are twice as efficient.
+        cost:3.1e24 complex
+        passive:multiply yield of cog by 2
+        icon:icons[15,7]
+        req:100 cog
+ 
+   *cogUP6
+        name:Never Have To Wait
+        desc:Don't wait for the complex, create it.<//><b>Effect:</b><.>Cognitive Inators are twice as efficient.
+        cost:3.1e26 complex
+        passive:multiply yield of cog by 2
+        icon:icons[15,7]
+        req:150 cog
+ 
+    //boost upgrades
+ 
+    *boostUP1
+        name:What a milestone
+        desc:Yes, indeed.<//><b>Effect:</b><.>complex production 100%
+        cost:1000000 complex
+        passive:multiply yield of complex by 2
+        req:10000 complex
+ 
+    *boostUP2
+        name:In the Zen
+        desc:Relax when these get more useful<//><b>Effect:</b><.>complex production 100%
+        cost:1000000000 complex
+        passive:multiply yield of complex by 2
+        req:10000000 complex
+ 
+    *boostUP3
+        name:Legend of a trillion
+        desc:Congrats, you win a complex! And an Inator.<//><b>Effect:</b><.>complex production 100%
+        cost:1000000000000 complex
+        passive:multiply yield of complex by 2
+        req:10000000000 complex
+ 
+    *boostUP4
+        name:Quadgod
+        desc:That's not my middle name. It's my Xtreme dream name.<//><b>Effect:</b><.>complex production 100%
+        cost:1000000000000000 complex
+        passive:multiply yield of complex by 2
+        req:10000000000000 complex
+ 
+    *boostUP5
+        name:Quintflint
+        desc:Bring on the steel.<//><b>Effect:</b><.>complex production 100%
+        cost:1000000000000000000 complex
+        passive:multiply yield of complex by 2
+        req:10000000000000000 complex
+ 
+    *boostUP6
+        name:Sextrekt
+        desc:And we move on to sept!<//><b>Effect:</b><.>complex production 100%
+        cost:1000000000000000000000 complex
+        passive:multiply yield of complex by 2
+        req:10000000000000000000 complex
+ 
+    *boostUP7
+        name:Septkept
+        desc:OK, these don't make sense anymore.<//><b>Effect:</b><.>complex production 100%
+        cost:1000000000000000000000000 complex
+        passive:multiply yield of complex by 2
+        req:10000000000000000000000 complex
+ 
+    //mini complex particle upgrades
+ 
+    *mcpUP1
+        name:Complex Helpers
+        desc:Time to get complex, sir.<//><b>Effect:</b><.>You <b>gain more CpS</b> the more <b>cheevos</b> you have.
+        cost:9000000 complex
+        passive:multiply yield of complex by 0.04*(cheevos)
+        req:13 cheevos
+ 
+    *mcpUP2
+        name:Complex workers
+        desc:Complex is as complex does, sir.<//><b>Effect:</b><.>You <b>gain more CpS</b> the more <b>cheevos</b> you have.
+        cost:9000000000 complex
+        passive:multiply yield of complex by 0.04*(cheevos)
+        req:25 cheevos
+ 
+    *mcpUP3
+        name:Complex engineers
+        desc:We're getting everything to complex together, sir.<//><b>Effect:</b><.>You <b>gain more CpS</b> the more <b>cheevos</b> you have.
+        cost:90000000000000 complex
+        passive:multiply yield of complex by 0.04*(cheevos)
+        req:50 cheevos
+ 
+    *mcpUP4
+        name:Complex overseers
+        desc:My complex is to serve you, sir.<//><b>Effect:</b><.>You <b>gain more CpS</b> the more <b>cheevos</b> you have.
+        cost:90000000000000000 complex
+        passive:multiply yield of complex by 0.04*(cheevos)
+        req:75 cheevos
+ 
+    *mcpUP5
+        name:Complex managers
+        desc:That's not going to complex any problem, sir.<//><b>Effect:</b><.>You <b>gain more CpS</b> the more <b>cheevos</b> you have.
+        cost:900000000000000000000 complex
+        passive:multiply yield of complex by 0.04*(cheevos)
+        req:100 cheevos
+ 
+    *mcpUP6
+        name:Complex accountants
+        desc:Business complex going great, sir.<//><b>Effect:</b><.>You <b>gain more CpS</b> the more <b>cheevos</b> you have.
+        cost:900000000000000000000000 complex
+        passive:multiply yield of complex by 0.04*(cheevos)
+        passive:multiply yield of clickButton by 0.04
+        passive:multiply yield of clickButton by 5
+        req:125 cheevos
+ 
+    //Having X of everything upgrades
+ 
+    *milestoneUP1
+        name:Basic complex
+        desc:Complex production multiplier +10%.<//><q>Rewarded for owning 100 of everything</q>
+        cost:1e18 complex
+        passive:multiply yield of complex by 1.1
+        req:cursor>=100 and paper>=100 and house>=100 and computer>=100 and microwave>=100 and music>=100 and animation>=100 and furniture>=100 and planet>=100 and meme>=100 and train>=100 and alien>=100 and light>=100 and ac>=100 and code>=100
+ 
+    *milestoneUP2
+        name:Dark complex
+        desc:Complex production multiplier +10%.<//><q>Rewarded for owning 150 of everything</q>
+        cost:1e21 complex
+        passive:multiply yield of complex by 1.1
+        req:cursor>=150 and paper>=150 and house>=150 and computer>=150 and microwave>=150 and music>=150 and animation>=150 and furniture>=150 and planet>=150 and meme>=150 and train>=150 and alien>=150 and light>=150 and ac>=150 and code>=150
+ 
+    *milestoneUP3
+        name:Ruby complex
+        desc:Complex production multiplier +10%.<//><q>Rewarded for owning 200 of everything</q>
+        cost:1e24 complex
+        passive:multiply yield of complex by 1.1
+        req:cursor>=200 and paper>=200 and house>=200 and computer>=200 and microwave>=200 and music>=200 and animation>=200 and furniture>=200 and planet>=200 and meme>=200 and train>=200 and alien>=200 and light>=200 and ac>=200 and code>=200
+ 
+    //something upgrades
+ 
+    *aprilUP1
+        name:April unfools
+        desc:<b>Unlocks something, no joke...</b>
+        cost:1e26 complex
+        passive:multiply yield of paper by 10
+        passive:multiply yield of complex by 4
+        req:milestoneUP3
+ 
+    *aprilUP2
+        name:Book of complex I
+        desc:Well, you never expected this.<//><b>Unlocks something else...</b>
+        cost:2.5e28 complex
+        passive:multiply yield of paper by 10
+        passive:multiply yield of planet by 5
+        req:aprilUP1
+        icon:icons[0,10]
+ 
+    *aprilUP3
+        name:Book of complex II
+        desc:You expected this.<//><b>Unlocks more content</b>
+        cost:1.25e30 complex
+        passive:multiply yield of paper by 10
+        passive:multiply yield of planet by 5
+        req:bookUP12
+        icon:icons[1,10]
+ 
+    //synergy upgrades
+ 
+    *bookUP1
+        name:Alien households
+        desc:They would also like green wallpaper.<//><b>Effect:</b><.>House production x10.<.>Alien production x10
+        cost:2.8e18 complex
+        passive:multiply yield of house by 10
+        passive:multiply yield of alien by 10
+        req:15 house, 15 alien, aprilUP2
+ 
+    *bookUP2
+        name:knit.js
+        desc:If the elderly aren't good at JavaScript, they'll sure like knit.js.<//><b>Effect:</b><.>Computer production x10.<.>Furniture production x10.<.>Coder production x10
+        cost:6.6024e13 complex
+        passive:multiply yield of computer by 10
+        passive:multiply yield of furniture by 10
+        passive:multiply yield of code by 10
+        req:15 computer, 15 furniture, aprilUP2
+ 
+    *bookUP3
+        name:Light powered microwaves
+        desc:Sunlight, artificial light, whatever you got, it'll warm your food in seconds!<//><b>Effect:</b><.>Microwave production x10<.>Electricity production x10
+        cost:3.4e19 complex
+        passive:multiply yield of microwave by 10
+        passive:multiply yield of light by 10
+        req:15 microwave, 15 furniture, aprilUP2
+ 
+    *bookUP4
+        name:Musical trains
+        desc:They send whimsical note bars of the chimney.<//><b>Effect:</b><.>Music production x10<.>Train production x10
+        cost:2e17 complex
+        passive:multiply yield of music by 10
+        passive:multiply yield of train by 10
+        req:15 music, 15 train, aprilUP2
+ 
+    *bookUP5
+        name:asdf
+        desc:First, go on youtube, second, type in asdf, third, find a thumbnail that looks like a train with rainbow colored text, fourth, watch the video, fifth, enjoy.<//><b>Effect:</b><.>Animation production x10<.>Train production x10
+        cost:2.03e17 complex
+        passive:multiply yield of animation by 10
+        passive:multiply yield of train by 10
+        req:15 animation, 15 train, aprilUP2
+ 
+    *bookUP6
+        name:Meme antiques
+        desc:Is that the good ol' meme era picture of 2007 Copyright 19??<//><b>Effect:</b><.>Furniture production x10<.>Meme production x10
+        cost:1.556e16 complex
+        passive:multiply yield of furniture by 10
+        passive:multiply yield of meme by 10
+        req:15 furniture, 15 meme, aprilUP2
+ 
+    *bookUP7
+        name:The Analog dimension
+        desc:For the smart and the intellectuals, take a deep breath as you indulge into the wonderful dimension of typewriting. You could become a famous author there.<//><b>Effect:</b><.>Computer production x10<.>Planet production x10
+        cost:1.02e15 complex
+        passive:multiply yield of computer by 10
+        passive:multiply yield of planet by 10
+        req:15 computer, 15 planet, aprilUP2
+ 
+    *bookUP8
+        name:Meme binging
+        desc:Let the nostalgia come pouring in.<//><b>Effect:</b><.>Computer production x10<.>Meme production x10
+        cost:1.5e16 complex
+        passive:multiply yield of computer by 10
+        passive:multiply yield of meme by 10
+        req:15 computer, 15 meme, aprilUP2
+ 
+    *bookUP9
+        name:Hotel chugga
+        desc:You'll be going places... in the hotel.<//><b>Effect:</b><.>House production x10<.>Train production x10
+        cost:2e17 complex
+        passive:multiply yield of house by 10
+        passive:multiply yield of train by 10
+        req:15 house, 15 train, aprilUP2
+ 
+    *bookUP10
+        name:Alien overlords
+        desc:They'll come conquering planets, apart from Earth, of course.<//><b>Effect:</b><.>Planet production x10<.>Alien production x10
+        cost:2.81e18 complex
+        passive:multiply yield of planet by 10
+        passive:multiply yield of alien by 10
+        req:15 planet, 15 alien, aprilUP2
+ 
+    *bookUP11
+        name:Headphones of illumination
+        desc:You are relaxed, you are now travelling in light.<//><b>Effect:</b><.>Music production x10<.>Electricity production x10
+        cost:3.4e19 complex
+        passive:multiply yield of music by 10
+        passive:multiply yield of light by 10
+        req:15 music, 15 light, aprilUP2
+ 
+    *bookUP12
+        name:Furnished cursors
+        desc:We can sell this cursor to an antiques shop and earn tons of complex.<//><b>Effect:</b><.>Furniture production x10<.>Almighty cursor production x10
+        cost:4.20e20 complex
+        passive:multiply yield of furniture by 10
+        passive:multiply yield of ac by 10
+        req:15 furniture, 15 ac, aprilUP2
+ 
+    *secondBookUP1
+        name:Hive brain
+        desc:The aliens suddenly manage to get intelligent without human brains.<//><b>Effect:</b><.>Alien production x10<.>Computer production x10
+        cost:5e29 complex
+        passive:multiply yield of alien by 10
+        passive:multiply yield of computer by 10
+        req:75 alien, 75 computer, aprilUP3
+ 
+    *secondBookUP2
+        name:Balance it out
+        desc:Everything is <b>2 times</b> as efficient, but clicking is <b>90%</b> less efficient.
+        cost:7.5e29 complex
+        passive:multiply yield of cursor by 2
+        passive:multiply yield of paper by 2
+        passive:multiply yield of house by 2
+        passive:multiply yield of computer by 2
+        passive:multiply yield of microwave by 2
+        passive:multiply yield of music by 2
+        passive:multiply yield of animation by 2
+        passive:multiply yield of furniture by 2
+        passive:multiply yield of planet by 2
+        passive:multiply yield of meme by 2
+        passive:multiply yield of train by 2
+        passive:multiply yield of alien by 2
+        passive:multiply yield of light by 2
+        passive:multiply yield of ac by 2
+        passive:multiply yield of code by 2
+        passive:multiply yield of clickButton by 0.1
+        req:secondBookUP1, 1e21 complex per second
+ 
+    *secondBookUP3
+        name:Working in motion
+        desc:Everything is <b>2 times</b> as efficient, but clicking is <b>90%</b> less efficient.
+        cost:1e28 complex
+        passive:multiply yield of cursor by 2
+        passive:multiply yield of paper by 2
+        passive:multiply yield of house by 2
+        passive:multiply yield of computer by 2
+        passive:multiply yield of microwave by 2
+        passive:multiply yield of music by 2
+        passive:multiply yield of animation by 2
+        passive:multiply yield of furniture by 2
+        passive:multiply yield of planet by 2
+        passive:multiply yield of meme by 2
+        passive:multiply yield of train by 2
+        passive:multiply yield of alien by 2
+        passive:multiply yield of light by 2
+        passive:multiply yield of ac by 2
+        passive:multiply yield of code by 2
+        passive:multiply yield of clickButton by 0.1
+        req:secondBookUP2, 1e22 complex per second
+ 
+    *secondBookUP4
+        name:Super team
+        desc:Everything is <b>2 times</b> as efficient, but clicking is <b>95%</b> less efficient.
+        cost:2e28 complex
+        passive:multiply yield of cursor by 2
+        passive:multiply yield of paper by 2
+        passive:multiply yield of house by 2
+        passive:multiply yield of computer by 2
+        passive:multiply yield of microwave by 2
+        passive:multiply yield of music by 2
+        passive:multiply yield of animation by 2
+        passive:multiply yield of furniture by 2
+        passive:multiply yield of planet by 2
+        passive:multiply yield of meme by 2
+        passive:multiply yield of train by 2
+        passive:multiply yield of alien by 2
+        passive:multiply yield of light by 2
+        passive:multiply yield of ac by 2
+        passive:multiply yield of code by 2
+        passive:multiply yield of clickButton by 0.05
+        req:secondBookUP3, 2e22 complex per second
+ 
+    *secondBookUP5
+        name:Complex army
+        desc:Everything is <b>2 times</b> as efficient, but clicking is <b>95%</b> less efficient.
+        cost:3e28 complex
+        passive:multiply yield of cursor by 2
+        passive:multiply yield of paper by 2
+        passive:multiply yield of house by 2
+        passive:multiply yield of computer by 2
+        passive:multiply yield of microwave by 2
+        passive:multiply yield of music by 2
+        passive:multiply yield of animation by 2
+        passive:multiply yield of furniture by 2
+        passive:multiply yield of planet by 2
+        passive:multiply yield of meme by 2
+        passive:multiply yield of train by 2
+        passive:multiply yield of alien by 2
+        passive:multiply yield of light by 2
+        passive:multiply yield of ac by 2
+        passive:multiply yield of code by 2
+        passive:multiply yield of clickButton by 0.05
+        req:secondBookUP4, 3e22 complex per second
+ 
+    *secondBookUP6
+        name:Complex equilibrium
+        desc:Everything is <b>2 times</b> as efficient, but clicking is <b>25%</b> less efficient.
+        cost:4e28 complex
+        passive:multiply yield of cursor by 2
+        passive:multiply yield of paper by 2
+        passive:multiply yield of house by 2
+        passive:multiply yield of computer by 2
+        passive:multiply yield of microwave by 2
+        passive:multiply yield of music by 2
+        passive:multiply yield of animation by 2
+        passive:multiply yield of furniture by 2
+        passive:multiply yield of planet by 2
+        passive:multiply yield of meme by 2
+        passive:multiply yield of train by 2
+        passive:multiply yield of alien by 2
+        passive:multiply yield of light by 2
+        passive:multiply yield of ac by 2
+        passive:multiply yield of code by 2
+        passive:multiply yield of clickButton by 0.75
+        req:secondBookUP5, 5e22 complex per second
+ 
+    *secondBookUP7
+        name:All rise!
+        desc:Everything <b>2 times</b> as efficient, but clicking is <b>75%</b> less efficient.
+        cost:5e28 complex
+        passive:multiply yield of cursor by 2
+        passive:multiply yield of paper by 2
+        passive:multiply yield of house by 2
+        passive:multiply yield of computer by 2
+        passive:multiply yield of microwave by 2
+        passive:multiply yield of music by 2
+        passive:multiply yield of animation by 2
+        passive:multiply yield of furniture by 2
+        passive:multiply yield of planet by 2
+        passive:multiply yield of meme by 2
+        passive:multiply yield of train by 2
+        passive:multiply yield of alien by 2
+        passive:multiply yield of light by 2
+        passive:multiply yield of ac by 2
+        passive:multiply yield of code by 2
+        passive:multiply yield of clickButton by 0.25
+        req:secondBookUP6, 6e22 complex per second
+ 
+    //golden complex upgrades
+ 
+    *gcUP1
+        name:Shiny touch
+        desc:<b>1%</b> chance of gaining <b>1 golden complex</b> per complex click
+        icon:icons[22,11]
+        cost:1 goldenComplex
+        req:1 goldenComplex:earned
+ 
+    *gcUP2
+        name:Frequent luck
+        desc:Lucky complex appear <b>30%</b> more often.
+        icon:icons[27,6]
+        passive:multiply frequency of luckyComplex by 0.7
+        cost:10 goldenComplex
+        req:1 goldenComplex:earned
+ 
+    *gcUP3
+        name:Powerful luck
+        desc:Lucky complex effects are <b>4 times</b> more powerful.
+        icon:icons[26,11]
+        cost:25 goldenComplex
+        req:10 goldenComplex:earned
+ 
+    *gcUP4
+        name:The key to more content
+        desc:Unlocks <b>something golden</b>.
+        icon:icons[15,7]
+        cost:50 goldenComplex
+        req:25 goldenComplex:earned
+ 
+    //Golden factory upgrades
+ 
+    *gfUP1
+        name:Gleaming gold
+        desc:Golden Factories are <b>25 times</b> more efficient.
+        passive:multiply yield of GFact by 25
+        cost:2000 goldenComplex
+        icon:icons[25,6]
+        req:1 GFact
+ 
+    *gfUP2
+        name:Fortunate aura
+        desc:Golden Factories are <b>25 times</b> more efficient.
+        passive:multiply yield of GFact by 25
+        cost:10000 goldenComplex
+        icon:icons[25,6]
+        req:5 GFact
+ 
+    *gfUP3
+        name:Shining flaxen
+        desc:Golden Factories are <b>25 times</b> more efficient.
+        passive:multiply yield of GFact by 25
+        cost:100000 goldenComplex
+        icon:icons[25,6]
+        req:25 GFact
+ 
+    *gfUP4
+        name:The Shining
+        desc:Golden Factories are <b>10 times</b> more efficient.
+        passive:multiply yield of GFact by 10
+        cost:10000000 goldenComplex
+        icon:icons[25,6]
+        req:50 GFact
+ 
+    *gfUP5
+        name:Blonder and Golder
+        desc:Golden Factories are <b>5 times</b> more efficient.
+        passive:multiply yield of GFact by 5
+        cost:1000000000 goldenComplex
+        icon:icons[25,6]
+        req:100 GFact
+ 
+    *gfUP6
+        name:Ching! Sparkle Sparkle
+        desc:Golden Factories are <b>10 times</b> more efficient.
+        passive:multiply yield of GFact by 10
+        cost:100000000000 goldenComplex
+        icon:icons[25,6]
+        req:150 GFact
+ 
+Achievements
+    *TEMPLATE
+        on click:anim glow
+ 
+    *complexApocCheevo1
+        name:It begins
+        desc:Start the <b>Complexapocalypse</b>.
+        req:complexApocUP6
+        icon:icons[11,8]
+        on earn:yield 1 cheevos
+    *complexApocCheevo2
+        name:It ends
+        desc:Stop the <b>Complexapocalypse</b>.
+        req:complexApocUP10
+        icon:icons[22,1]
+        on earn:yield 1 cheevos
+ 
+    *miscCheevo1
+        name:Complex clicker
+        desc:Click on the word complex.<//><q>This isn't the complex you're clicking for.</q>
+        req:1 clickOnComplex
+        icon:icons[11,0]
+        on earn:yield 1 cheevos
+    *miscCheevo2
+        name:Click addiction
+        desc:Click on the word complex <b>50</b> times.<//><q>This STILL isn't the complex you're clicking for.</q>
+        req:50 clickOnComplex
+        icon:icons[11,1]
+        on earn:yield 1 cheevos
+    *miscCheevo3
+        name:Click obsession
+        desc:Click on the word complex <b>100</b> times.<//><q>Stop it</q>
+        req:100 clickOnComplex
+        icon:icons[11,13]
+        on earn:yield 1 cheevos
+    *miscCheevo4
+        name:Golden clicker
+        desc:Click on the word golden complex <b>once</b>.
+        req:1 clickOnGolden
+        icon:icons[11,13]
+        on earn:yield 1 cheevos
+    *miscCheevo5
+        name:Gold obsession
+        desc:Click on the word golden complex <b>50</b> times.
+        req:50 clickOnGolden
+        icon:icons[11,13]
+        on earn:yield 1 cheevos
+    *miscCheevo6
+        name:Unstoppable gold clicking
+        desc:Click on the word golden complex <b>100</b> times.<//><q>You know, you're not ACTUALLY clicking on gold</q>
+        req:100 clickOnGolden
+        icon:icons[11,13]
+        on earn:yield 1 cheevos
+ 
+    *clickCheevo1
+        name:Get clicking
+        desc:Click <b>once.</b>
+        req:1 clickButton clicks
+        icon:icons[11,0]
+        on earn:yield 1 cheevos
+    *clickCheevo2
+        name:Carpal tunnel
+        desc:Click <b>1k times.</b>
+        req:1000 clickButton clicks
+        icon:icons[11,1]
+        on earn:yield 1 cheevos
+    *clickCheevo3
+        name:Clicking pro
+        desc:Click <b>10k times.</b>
+        req:10000 clickButton clicks
+        icon:icons[11,2]
+        on earn:yield 1 cheevos
+    *clickCheevo4
+        name:Clickzilla
+        desc:Click <b>50k times.</b>
+        req:50000 clickButton clicks
+        icon:icons[11,13]
+        on earn:yield 1 cheevos
+    *clickCheevo5
+        name:Clicktastic
+        desc:Click <b>200k times.</b><//><q>You're clicksane!</q>
+        req:200000 clickButton clicks
+        icon:icons[11,14]
+        on earn:yield 1 cheevos
+ 
+    *timeCheevo1
+        name:We're not even started!
+        desc:Play for <b>a minute.</b>
+        req:60 time
+        icon:icons[23,11]
+        on earn:yield 1 cheevos
+    *timeCheevo2
+        name:Passing the time
+        desc:Play for <b>10 minutes.</b>
+        req:600 time
+        icon:icons[23,11]
+        on earn:yield 1 cheevos
+    *timeCheevo3
+        name:Time spent is time kept
+        desc:Play for <b>30 minutes.</b>
+        req:1800 time
+        icon:icons[23,11]
+        on earn:yield 1 cheevos
+    *timeCheevo4
+        name:Working hours
+        desc:Play for <b>an hour.</b>
+        req:3600 time
+        icon:icons[23,11]
+        on earn:yield 1 cheevos
+    *timeCheevo5
+        name:Mid-day meddle
+        desc:Play for <b>12 hours.</b>
+        req:43200 time
+        icon:icons[23,11]
+        on earn:yield 1 cheevos
+    *timeCheevo6
+        name:Seize the day
+        desc:Play for <b>a day.</b>
+        req:86400 time
+        icon:icons[23,11]
+        on earn:yield 1 cheevos
+    *timeCheevo7
+        name:Weak in a week
+        desc:Play for <b>a week.</b>
+        req:604800 time
+        icon:icons[23,11]
+        on earn:yield 1 cheevos
+ 
+    *winaComplexCheevo
+        name:You win a complex
+        desc:This is for having 10 trillion complex all time and for being all-round epic.<//><q>We're all so proud of you.</q>
+        req:10000000000000 complex:earned
+        on earn:yield 1 cheevos
+ 
+    *synergyCheevo1
+        name:Synergistic
+        desc:Purchase the <b>book of complex I.</b>
+        req:aprilUP2
+        on earn:yield 1 cheevos
+    *synergyCheevo2
+        name:Synergenetic
+        desc:Finish studying the <b>book of complex I.</b>
+        req:bookUP12
+        on earn:yield 1 cheevos
+    *synergyCheevo3
+        name:Book guy
+        desc:Purchase the <b>second book of complex.</b>
+        req:secondBookUP1
+        on earn:yield 1 cheevos
+    *synergyCheevo4
+        name:Bookworm
+        desc:Finish studying the <b>second book of complex.</b>
+        req:secondBookUP7
+        on earn:yield 1 cheevos
+ 
+    *gateCheevo1
+        name:Bar Almost None
+        desc:Fill the bar to <b>1</b>.
+        req:1 gate
+        on earn:yield 1 cheevos
+        icon:icons[15,11]
+    *gateCheevo2
+        name:Bar Half
+        desc:Fill the bar to <b>50</b>
+        req:50 gate
+        on earn:yield 1 cheevos
+        icon:icons[15,11]
+    *gateCheevo3
+        name:Bar Done
+        desc:Finish filling the bar.
+        req:100 gate
+        on earn:yield 1 cheevos
+        icon:icons[15,11]
+ 
+    *goldenCheevo1
+        name:Gold Hoarder
+        desc:Earn <b>1</b> golden complex.
+        req:1 goldenComplex:earned
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
+    *goldenCheevo2
+        name:Gold Digger
+        desc:Earn <b>100</b> golden complex.
+        req:100 goldenComplex:earned
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
+    *goldenCheevo3
+        name:Gold Milestone
+        desc:Earn <b>10K</b> golden complex.
+        req:10000 goldenComplex:earned
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
+    *goldenCheevo4
+        name:Gold Pro
+        desc:Earn <b>1 million</b> golden complex.
+        req:1000000 goldenComplex:earned
+        on earn:yield 1 cheevos
+    *goldenCheevo5
+        name:Gold Elite
+        desc:Earn <b>10 million</b> golden complex.
+        req:10000000 goldenComplex:earned
+        on earn:yield 1 cheevos
+    *goldenCheevo6
+        name:Gold Warrior
+        desc:Earn <b>100 million</b> golden complex.
+        req:100000000 goldenComplex:earned
+        on earn:yield 1 cheevos
+    *goldenCheevo7
+        name:Gold Wizard
+        desc:Earn <b>1 billion</b> golden complex.
+        req:1000000000 goldenComplex:earned
+        on earn:yield 1 cheevos
+    *goldenCheevo8
+        name:The Golden One
+        desc:Earn <b>10 billion</b> golden complex.
+        req:10000000000 goldenComplex:earned
+        on earn:yield 1 cheevos
+    *goldenCheevo9
+        name:Gold God
+        desc:Earn <b>100 billion</b> golden complex.
+        req:100000000000 goldenComplex:earned
+        on earn:yield 1 cheevos
+ 
+    *complexCheevo1
+        name:Inator Journey
+        desc:Have <b>1</b> complex all time.
+        req:1 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo2
+        name:Creating some Inators
+        desc:Have <b>1,000</b> complex all time.
+        req:1000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo3
+        name:Lets get complex
+        desc:Have <b>100,000</b> complex all time.
+        req:100000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo4
+        name:Inator Production
+        desc:Have <b>1 million</b> complex all time.
+        req:1000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo5
+        name:Ultimate complex
+        desc:Have <b>100 million</b> complex all time.
+        req:100000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo6
+        name:Complexity Productivity
+        desc:Have <b>1 billion</b> complex all time.
+        req:1000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo7
+        name:Complex genius
+        desc:Have <b>100 billion</b> complex all time.
+        req:100000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo8
+        name:Complex master
+        desc:Have <b>1 trillion</b> complex all time.
+        req:1000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo9
+        name:Einstein's law of complexity
+        desc:Have <b>100 trillion</b> complex all time.
+        req:100000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo10
+        name:Complex to the power of 2
+        desc:Have <b>1 quadrillion</b> complex all time.
+        req:1000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo11
+        name:Complexing
+        desc:Have <b>100 quadrillion</b> complex all time.
+        req:100000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo12
+        name:Complexinator?
+        desc:Have <b>1 quintillion</b> complex all time.
+        req:1000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo13
+        name:Complex Legend
+        desc:Have <b>100 quintillion</b> complex all time.
+        req:100000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo14
+        name:Overcomplex
+        desc:Have <b>1 sextillion</b> complex all time.
+        req:1000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo15
+        name:Immortality of complex
+        desc:Have <b>100 sextillion</b> complex all time.
+        req:100000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo16
+        name:Wow
+        desc:Have <b>1 septillion</b> complex all time.
+        req:1000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo17
+        name:W o w
+        desc:Have <b>100 septillion</b> complex all time.
+        req:100000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo18
+        name:Complexception
+        desc:Have <b>1 octillion</b> complex all time.
+        req:1000000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo19
+        name:If you've got this achievement, you have seen 13 achievements titles with the word 'complex' in it. Oh, now 14.
+        desc:Have <b>100 octillion</b> complex all time.
+        req:100000000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo20
+        name:Living a complex life
+        desc:Have <b>1 nonillion</b> complex all time.
+        req:100000000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo21
+        name:Coping with my complex
+        desc:Have <b>100 nonillion</b> complex all time.
+        req:10000000000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo22
+        name:Complexian
+        desc:Have <b>1 decillion</b> complex all time.
+        req:100000000000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo23
+        name:Complex ideas
+        desc:Have <b>100 decillion</b> complex all time.
+        req:10000000000000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+    *complexCheevo24
+        name:Complex I Deers
+        desc:Have <b>1 undecillion</b> complex all time.
+        req:10000000000000000000000000000000000 complex:earned
+        on earn:yield 1 cheevos
+ 
+    *complexPsCheevo1
+        name:Stuff and complex
+        desc:Produce <b>1</b> complex per second.
+        req:1 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo2
+        name:Business complex
+        desc:Produce <b>10</b> complex per second.
+        req:10 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo3
+        name:The Complexic Table
+        desc:Produce <b>100</b> complex per second.
+        req:100 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo4
+        name:Complex management
+        desc:Produce <b>1,000</b> complex per second.
+        req:1000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo5
+        name:Complex control
+        desc:Produce <b>10,000</b> complex per second.
+        req:10000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo6
+        name:Zombie Acomplex
+        desc:Produce <b>1 million</b> complex per second.
+        req:1000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo7
+        name:Like, Complex and Subscribe!
+        desc:Produce <b>10 million</b> complex per second.
+        req:10000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo8
+        name:Complex Simulation
+        desc:Produce <b>100 million</b> complex per second.
+        req:100000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo9
+        name:Social complex
+        desc:Produce <b>1 billion</b> complex per second.
+        req:1000000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo10
+        name:Science complex
+        desc:Produce <b>10 billion</b> complex per second.
+        req:10000000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo11
+        name:Complex among the world
+        desc:Produce <b>1 trillion</b> complex per second.
+        req:1000000000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo12
+        name:What a complex world
+        desc:Produce <b>10 trillion</b> complex per second.
+        req:10000000000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo13
+        name:Complex phase
+        desc:Produce <b>100 trillion</b> complex per second.
+        req:100000000000000 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo14
+        name:Napoleon complex
+        desc:Produce <b>1 quadrillion</b> complex per second.
+        req:1e15 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo15
+        name:K-complex
+        desc:Produce <b>10 quadrillion</b> complex per second.
+        req:1e16 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo16
+        name:Shadow complex
+        desc:Produce <b>1 quintillion</b> complex per second.
+        req:1e18 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo17
+        name:Complex number
+        desc:. Produce <b>10 quintillion</b> complex per second.<//><q>19 zeroes? Absolutely complex, however, I'd like to see more</q>
+        req:1e19 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo18
+        name:Inator Zim
+        desc:Produce <b>100 quintillion</b> complex per second.
+        req:1e20 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo19
+        name:Inator Principles
+        desc:Produce <b>1 sextillion</b> complex per second.
+        req:1e21 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo20
+        name:There's really no hard limit to how long these achievement names can be and to be quite honest I'm rather curious to see how far we can go. Actually, I don't feel like doing it. Anyways, how's your day been?
+        desc:Produce <b>10 sextillion</b> complex per second.
+        req:1e22 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo21
+        name:Complexe
+        desc:Produce <b>1 septillion</b> complex per second.
+        req:1e24 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo22
+        name:Coneplax
+        desc:Produce <b>10 septillion</b> complex per second.
+        req:1e25 complex per second
+        on earn:yield 1 cheevos
+    *complexPsCheevo23
+        name:Cornplex
+        desc:Produce <b>100 septillion</b> complex per second.
+        req:1e26 complex per second
+        on earn:yield 1 cheevos
+ 
+    *buildCheevo1
+        name:One of everything
+        desc:Have at least <b>1 of everything.</b>
+        req:cursor>=1 and paper>=1 and house>=1 and computer>=1 and microwave>=1 and music>=1 and animation>=1 and furniture>=1 and planet>=1 and meme>=1 and train>=1 and alien>=1 and light>=1 and ac>=1 and code>=1
+        on earn:yield 1 cheevos
+ 
+    *buildCheevo2
+        name:Centennial
+        desc:Have <b>100 of everything.</b>
+        req:cursor>=100 and paper>=100 and house>=100 and computer>=100 and microwave>=100 and music>=100 and animation>=100 and furniture>=100 and planet>=100 and meme>=100 and train>=100 and alien>=100 and light>=100 and ac>=100 and code>=100
+        on earn:yield 1 cheevos
+        icon:icons[6,6]
+ 
+    *buildCheevo3
+        name:Centennial and a half
+        desc:Have <b>150 of everything.</b>
+        req:cursor>=150 and paper>=150 and house>=150 and computer>=150 and microwave>=150 and music>=150 and animation>=150 and furniture>=150 and planet>=150 and meme>=150 and train>=150 and alien>=150 and light>=150 and ac>=150 and code>=150
+        on earn:yield 1 cheevos
+        icon:icons[7,6]
+ 
+    *buildCheevo4
+        name:Bicentennial
+        desc:Have <b>200 of everything.</b>
+        req:cursor>=200 and paper>=200 and house>=200 and computer>=200 and microwave>=200 and music>=200 and animation>=200 and furniture>=200 and planet>=200 and meme>=200 and train>=200 and alien>=200 and light>=200 and ac>=200 and code>=200
+        on earn:yield 1 cheevos
+        icon:icons[8,6]
+ 
+    *cursorCheevo1
+        name:Click
+        desc:Have <b>1</b> cursor.
+        req:1 cursor
+        icon:icons[0,0]
+        on earn:yield 1 cheevos
+    *cursorCheevo2
+        name:Double-click
+        desc:Have <b>2</b> cursors.
+        req:2 cursor
+        icon:icons[0,6]
+        on earn:yield 1 cheevos
+    *cursorCheevo3
+        name:Mouse Wheel
+        desc:Have <b>50</b> cursors.
+        req:50 cursor
+        icon:icons[1,6]
+        on earn:yield 1 cheevos
+    *cursorCheevo4
+        name:Of Mice and Men
+        desc:Have <b>100</b> cursors.
+        req:100 cursor
+        icon:icons[0,1]
+        on earn:yield 1 cheevos
+    *cursorCheevo5
+        name:The Digital
+        desc:Have <b>200</b> cursors.
+        req:200 cursor
+        icon:icons[0,2]
+        on earn:yield 1 cheevos
+    *cursorCheevo6
+        name:Extreme polydactlyly
+        desc:Have <b>300</b> cursors.
+        req:300 cursor
+        icon:icons[0,13]
+        on earn:yield 1 cheevos
+    *cursorCheevo7
+        name:Dr.T
+        desc:Have <b>400</b> cursors.
+        req:400 cursor
+        icon:icons[0,14]
+        on earn:yield 1 cheevos
+ 
+    *paperCheevo1
+        name:Tear it up
+        desc:Have <b>1</b> paper.
+        req:1 paper
+        icon:icons[27,7]
+        on earn:yield 1 cheevos
+    *paperCheevo2
+        name:Paper party
+        desc:Have <b>50</b> paper.
+        req:50 paper
+        icon:icons[27,7]
+        on earn:yield 1 cheevos
+    *paperCheevo3
+        name:Paper machine
+        desc:Have <b>100</b> paper.
+        req:100 paper
+        icon:icons[27,7]
+        on earn:yield 1 cheevos
+    *paperCheevo4
+        name:Wetter
+        desc:Have <b>150</b> paper.
+        req:150 paper
+        icon:icons[27,7]
+        on earn:yield 1 cheevos
+    *paperCheevo5
+        name:When it rains, it rips
+        desc:Have <b>200</b> paper.
+        req:200 paper
+        icon:icons[27,7]
+        on earn:yield 1 cheevos
+    *paperCheevo6
+        name:Better ripped than never
+        desc:Have <b>250</b> paper.
+        req:250 paper
+        icon:icons[27,7]
+        on earn:yield 1 cheevos
+ 
+    *houseCheevo1
+        name:In construction
+        desc:Have <b>1</b> houses.
+        req:1 house
+        icon:icons[2,6]
+        on earn:yield 1 cheevos
+    *houseCheevo2
+        name:Measuremental
+        desc:Have <b>50</b> houses.
+        req:50 house
+        icon:icons[3,6]
+        on earn:yield 1 cheevos
+    *houseCheevo3
+        name:Hotel Frenzy
+        desc:Have <b>100</b> houses.
+        req:100 house
+        icon:icons[4,6]
+        on earn:yield 1 cheevos
+    *houseCheevo4
+        name:House insurance
+        desc:Have <b>150</b> houses.
+        req:150 house
+        icon:icons[5,6]
+        on earn:yield 1 cheevos
+    *houseCheevo5
+        name:Bricking Bricks
+        desc:Have <b>200</b> houses.
+        req:200 house
+        icon:icons[5,6]
+        on earn:yield 1 cheevos
+ 
+    *computerCheevo1
+        name:Mall, where??
+        desc:Have <b>1</b> computer.
+        req:1 computer
+        on earn:yield 1 cheevos
+    *computerCheevo2
+        name:Minibytes
+        desc:Have <b>50</b> computer.
+        req:50 computer
+        on earn:yield 1 cheevos
+    *computerCheevo3
+        name:Medibytes
+        desc:Have <b>100</b> computers.
+        req:100 computer
+        on earn:yield 1 cheevos
+    *computerCheevo4
+        name:Hardbytes
+        desc:Have <b>150</b> computers.
+        req:150 computer
+        on earn:yield 1 cheevos
+    *computerCheevo5
+        name:Bigbytes
+        desc:Have <b>200</b> computers.
+        req:200 computer
+        on earn:yield 1 cheevos
+ 
+    *microwaveCheevo1
+        name:Hawaii Wave
+        desc:Have <b>1</b> microwave
+        req:1 microwave
+        on earn:yield 1 cheevos
+    *microwaveCheevo2
+        name:Literal sweatshop
+        desc:Have <b>50</b> microwaves.
+        req:50 microwave
+        on earn:yield 1 cheevos
+    *microwaveCheevo3
+        name:Meltdown
+        desc:Have <b>100</b> microwaves.
+        req:100 microwave
+        on earn:yield 1 cheevos
+    *microwaveCheevo4
+        name:H-h-h-h-hot!
+        desc:Have <b>150</b> microwaves.
+        req:150 microwave
+        on earn:yield 1 cheevos
+    *microwaveCheevo5
+        name:Oooo, burn!
+        desc:Have <b>200</b> microwaves.
+        req:200 microwave
+        on earn:yield 1 cheevos
+ 
+    *musicCheevo1
+        name:The beat goes on
+        desc:Have <b>1</b> music.
+        req:1 music
+        on earn:yield 1 cheevos
+        icon:icons[28,6]
+    *musicCheevo2
+        name:Beat bars
+        desc:Have <b>50</b> music.
+        req:50 music
+        on earn:yield 1 cheevos
+        icon:icons[28,6]
+    *musicCheevo3
+        name:Voice of an angel
+        desc:Have <b>100</b> music.
+        req:100 music
+        on earn:yield 1 cheevos
+        icon:icons[28,6]
+    *musicCheevo4
+        name:Feeling in my body
+        desc:Have <b>150</b> music.
+        req:150 music
+        on earn:yield 1 cheevos
+        icon:icons[28,6]
+    *musicCheevo5
+        name:In harmony
+        desc:Have <b>200</b> music.
+        req:200 music
+        on earn:yield 1 cheevos
+        icon:icons[28,6]
+ 
+    *animationCheevo1
+        name:Drawn together
+        desc:Have <b>1</b> animation.
+        req:1 animation
+        on earn:yield 1 cheevos
+    *animationCheevo2
+        name:Frame Noob
+        desc:Have <b>50</b> animations.
+        req:50 animation
+        on earn:yield 1 cheevos
+    *animationCheevo3
+        name:Frame Genius
+        desc:Have <b>100</b> animations.
+        req:100 animation
+        on earn:yield 1 cheevos
+    *animationCheevo4
+        name:Penciling Ink
+        desc:Have <b>150</b> animations.
+        req:150 animation
+        on earn:yield 1 cheevos
+    *animationCheevo5
+        name:A drawn universe
+        desc:Have <b>200</b> animations.
+        req:200 animation
+        on earn:yield 1 cheevos
+ 
+    *furnitureCheevo1
+        name:Personal antique room
+        desc:Have <b>1</b> furniture.
+        req:1 furniture
+        on earn:yield 1 cheevos
+        icon:icons[21,21]
+    *furnitureCheevo2
+        name:Furniture village
+        desc:Have <b>50</b> furniture.
+        req:50 furniture
+        on earn:yield 1 cheevos
+        icon:icons[22,21]
+    *furnitureCheevo3
+        name:Rockin' chair
+        desc:Have <b>100</b> furniture.
+        req:100 furniture
+        on earn:yield 1 cheevos
+        icon:icons[23,21]
+    *furnitureCheevo4
+        name:Ruggy
+        desc:Have <b>150</b> furniture.
+        req:150 furniture
+        on earn:yield 1 cheevos
+        icon:icons[24,21]
+    *furnitureCheevo5
+        name:Technically TV
+        desc:Have <b>200</b> furniture.
+        req:200 furniture
+        on earn:yield 1 cheevos
+        icon:icons[25,21]
+ 
+    *planetCheevo1
+        name:Conquer Quest
+        desc:Have <b>1</b> planet.
+        req:1 planet
+        on earn:yield 1 cheevos
+        icon:icons[21,1]
+    *planetCheevo2
+        name:Pirate planet
+        desc:Have <b>50</b> planets.
+        req:50 planet
+        on earn:yield 1 cheevos
+        icon:icons[22,1]
+    *planetCheevo3
+        name:Cube world
+        desc:Have <b>100</b> planets.<//><q>I'll leave you to guess what the world is called.</q>
+        req:100 planet
+        on earn:yield 1 cheevos
+        icon:icons[23,1]
+    *planetCheevo4
+        name:Planet inc
+        desc:Have <b>150</b> planets.
+        req:150 planet
+        on earn:yield 1 cheevos
+        icon:icons[24,1]
+    *planetCheevo5
+        name:Multiverse
+        desc:Have <b>200</b> planets.
+        req:200 planet
+        on earn:yield 1 cheevos
+        icon:icons[25,1]
+ 
+    *memeCheevo1
+        name:Feels good, man
+        desc:Have <b>1</b> meme.
+        req:1 meme
+        on earn:yield 1 cheevos
+    *memeCheevo2
+        name:Spongebob
+        desc:Have <b>50</b> memes.
+        req:50 meme
+        on earn:yield 1 cheevos
+    *memeCheevo3
+        name:Surprised Pikachu
+        desc:Have <b>100</b> memes.
+        req:100 meme
+        on earn:yield 1 cheevos
+    *memeCheevo4
+        name:Meme upon us
+        desc:Have <b>150</b> memes.
+        req:150 meme
+        on earn:yield 1 cheevos
+    *memeCheevo5
+        name:Meme potential
+        desc:Have <b>200</b> memes.<//><q>Please make one about complex.</q>
+        req:200 meme
+        on earn:yield 1 cheevos
+ 
+    *trainCheevo1
+        name:Keep on rolling
+        desc:Have <b>1</b> train.
+        req:1 train
+        on earn:yield 1 cheevos
+    *trainCheevo2
+        name:Chug chug chug
+        desc:Have <b>50</b> trains.<//><q>I can sense a dad joke coming.</q>
+        req:50 train
+        on earn:yield 1 cheevos
+    *trainCheevo3
+        name:Steam squad
+        desc:Have <b>100</b> trains.<//><q>It's not our fault that there's pollution, blame factories!</q>
+        req:100 train
+        on earn:yield 1 cheevos
+    *trainCheevo4
+        name:Choo choo
+        desc:Have <b>150</b> trains.<//><q>Bless you.</q>
+        req:150 train
+        on earn:yield 1 cheevos
+    *trainCheevo5
+        name:I like trains!
+        desc:Have <b>200</b> trains.<//><q>Oh man, here it co-</q>
+        req:200 train
+        on earn:yield 1 cheevos
+ 
+    *alienCheevo1
+        name:Alien Invader
+        desc:Have <b>1</b> alien.
+        req:1 alien
+        on earn:yield 1 cheevos
+        icon:icons[8,10]
+    *alienCheevo2
+        name:The dance of the martians
+        desc:Have <b>50</b> aliens.<q>It starts with a bunch of jumping.</q>
+        req:50 alien
+        on earn:yield 1 cheevos
+        icon:icons[8,10]
+    *alienCheevo3
+        name:The aliens ate my homework
+        desc:Have <b>100</b> aliens.
+        req:100 alien
+        on earn:yield 1 cheevos
+        icon:icons[8,10]
+    *alienCheevo4
+        name:Alien sightings
+        desc:Have <b>150</b> aliens.
+        req:150 alien
+        on earn:yield 1 cheevos
+        icon:icons[8,10]
+    *alienCheevo5
+        name:Spongebob, the aliens would like to have a word with you
+        desc:Have <b>200</b> aliens.
+        req:200 alien
+        on earn:yield 1 cheevos
+        icon:icons[8,10]
+ 
+    *lightCheevo1
+        name:You'll never shine if you don't glow
+        desc:Have <b>1</b> electricity.
+        req:1 light
+        on earn:yield 1 cheevos
+        icon:icons[14,0]
+    *lightCheevo2
+        name:Spectrum
+        desc:Have <b>50</b> electricity.
+        req:50 light
+        on earn:yield 1 cheevos
+        icon:icons[14,1]
+    *lightCheevo3
+        name:Speed of light
+        desc:Have <b>100</b> electricity.<//><q>Upsetting that everyone forgets about the speed of dark.</q>
+        req:100 light
+        on earn:yield 1 cheevos
+        icon:icons[14,2]
+    *lightCheevo4
+        name:Light in August
+        desc:Have <b>150</b> electricity.
+        req:150 light
+        on earn:yield 1 cheevos
+        icon:icons[14,14]
+    *lightCheevo5
+        name:There is a light that never goes out
+        desc:Have <b>200</b> electricity.
+        req:200 light
+        on earn:yield 1 cheevos
+        icon:icons[14,15]
+ 
+    *acCheevo1
+        name:All the kids with the pumped up clicks
+        desc:Have <b>1</b> almighty cursors.
+        req:1 ac
+        on earn:yield 1 cheevos
+        icon:icons[12,30]
+    *acCheevo2
+        name:Click Less Monster
+        desc:Have <b>50</b> almighty cursors.<//><q>Don't click on it!</q>
+        req:50 ac
+        on earn:yield 1 cheevos
+        icon:icons[12,31]
+    *acCheevo3
+        name:Davy Jones Clicker
+        desc:Have <b>100</b> almighty cursors.<//><q>He keeps a locker full of cursors.</q>
+        req:100 ac
+        on earn:yield 1 cheevos
+        icon:icons[12,31]
+    *acCheevo4
+        name:Superclick
+        desc:Have <b>150</b> almighty cursors.<//><q>He shoots out really pointy cursors out from his hands to his enemies.</q>
+        req:150 ac
+        on earn:yield 1 cheevos
+        icon:icons[12,31]
+    *acCheevo5
+        name:Cubital tunnel prevention cream
+        desc:Have <b>200</b> almighty cursors.<//><q>It hurts to lift..</q>
+        req:200 ac
+        on earn:yield 1 cheevos
+        icon:icons[12,31]
+ 
+    *codeCheevo1
+        name:Line of code
+        desc:Have <b>1</b> coder
+        req:1 code
+        on earn:yield 1 cheevos
+    *codeCheevo2
+        name:Hard to translate
+        desc:Have <b>50</b> coders.
+        req:50 code
+        on earn:yield 1 cheevos
+    *codeCheevo3
+        name:I'm in a loop
+        desc:Have <b>100</b> coders.
+        req:100 code
+        on earn:yield 1 cheevos
+    *codeCheevo4
+        name:Number strings
+        desc:Have <b>150</b> coders.
+        req:150 code
+        on earn:yield 1 cheevos
+    *codeCheevo5
+        name:Binary Numbers
+        desc:Have <b>200</b> coders.
+        req:200 code
+        on earn:yield 1 cheevos
+ 
+    *cogCheevo1
+        name:Challenged Thinker
+        desc:Have <b>1</b> Cognitive Inator.
+        req:1 cog
+        on earn:yield 1 cheevos
+        icon:icons[15,7]
+    *cogCheevo2
+        name:The Beginning Thinker
+        desc:Have <b>50</b> Cognitive Inators.
+        req:50 cog
+        on earn:yield 1 cheevos
+        icon:icons[15,7]
+    *cogCheevo3
+        name:The Practicing Thinker
+        desc:Have <b>100</b> Cognitive Inators.
+        req:100 cog
+        on earn:yield 1 cheevos
+        icon:icons[15,7]
+    *cogCheevo4
+        name:The Advanced Thinker
+        desc:Have <b>150</b> Cognitive Inators.
+        req:150 cog
+        on earn:yield 1 cheevos
+        icon:icons[15,7]
+    *cogCheevo5
+        name:Enlightment
+        desc:Have <b>200</b> Cognitive Inators.
+        req:200 cog
+        on earn:yield 1 cheevos
+        icon:icons[15,7]
+ 
+    *gfCheevo1
+        name:Gold?
+        desc:Have <b>1</b> Golden Factory.
+        req:1 GFact
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
+    *gfCheevo2
+        name:Gold?!
+        desc:Have <b>50</b> Golden Factory.
+        req:50 GFact
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
+    *gfCheevo3
+        name:Gold!!
+        desc:Have <b>100</b> Golden Factory.
+        req:100 GFact
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
+    *gfCheevo4
+        name:Gold...?
+        desc:Have <b>150</b> Golden Factory.
+        req:150 GFact
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
+    *gfCheevo5
+        name:Wait, It's not gold
+        desc:Have <b>200</b> Golden Factory.
+        req:200 GFact
+        icon:icons[25,11]
+        on earn:yield 1 cheevos
